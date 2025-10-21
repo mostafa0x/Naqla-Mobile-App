@@ -1,6 +1,7 @@
 import AddButton from "@/components/AddButton";
 import LeaderBoard from "@/components/Leaderboard";
 import AddPlayerModel from "@/components/Models/AddPlayerModel";
+import VS from "@/components/Vs";
 import { Colors, Fonts } from "@/constants/theme";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { useCallback, useState } from "react";
@@ -30,6 +31,9 @@ export default function HomeScreen() {
         <View style={styles.sectionAddBtn}>
           <AddButton openModel={openModel} />
         </View>
+        <View style={styles.sectionVs}>
+          <VS />
+        </View>
       </View>
       <AddPlayerModel modelAddPlayer={modelAddPlayer} closeModel={closeModel} />
     </>
@@ -55,5 +59,8 @@ const styles = StyleSheet.create({
   sectionAddBtn: {
     marginTop: rh(146),
     alignSelf: "flex-end",
+  },
+  sectionVs: {
+    marginTop: rh(54),
   },
 });

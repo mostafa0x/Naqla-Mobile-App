@@ -1,9 +1,9 @@
 import { rh, rw } from "@/utils/dimensions";
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet, View } from "react-native";
 import Item from "./item";
 
-export default function LeaderBoard() {
+function LeaderBoard() {
   return (
     <View style={styles.container}>
       <Item
@@ -32,3 +32,5 @@ const styles = StyleSheet.create({
     marginTop: rh(23),
   },
 });
+
+export default memo(LeaderBoard);
