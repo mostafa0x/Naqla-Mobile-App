@@ -96,9 +96,11 @@ const styles = StyleSheet.create({
   },
   rank2Icon: {
     alignSelf: "flex-end",
+    paddingRight: rw(5),
   },
   rank3Icon: {
     alignSelf: "flex-start",
+    paddingLeft: rw(5),
   },
 });
 

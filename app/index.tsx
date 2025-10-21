@@ -1,4 +1,4 @@
-import Item_LeaderBoard from "@/components/icons/Leaderboard/item";
+import LeaderBoard from "@/components/icons/Leaderboard";
 import { Colors, Fonts } from "@/constants/theme";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { Link } from "expo-router";
@@ -12,12 +12,7 @@ export default function HomeScreen() {
           <Text style={styles.mainLabel}>اسياد اللعبه</Text>
         </View>
       </View>
-      <View style={{ flexDirection: "row" }}>
-        <Item_LeaderBoard
-          userData={{ playerName: "Test", winCount: 4, loseCount: 2, rank: 1 }}
-        />
-      </View>
-
+      <LeaderBoard />
       <Link href={"/GameScreen"}>Game button</Link>
     </View>
   );
