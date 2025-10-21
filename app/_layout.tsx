@@ -1,3 +1,4 @@
+import { Colors } from "@/constants/theme";
 import AllProvidersContext from "@/context/AllProvidersContext";
 import { store } from "@/lib/store";
 import { useFonts } from "expo-font";
@@ -24,7 +25,7 @@ export default function RootLayout() {
             <Stack
               screenOptions={{
                 headerShown: false,
-                contentStyle: { backgroundColor: "transpartant" },
+                contentStyle: { backgroundColor: Colors.bg },
               }}
             />
             <StatusBar style="light" backgroundColor="black" />

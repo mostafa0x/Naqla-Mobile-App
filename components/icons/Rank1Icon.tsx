@@ -3,7 +3,7 @@ import Svg, { Defs, G, Path, SvgProps } from "react-native-svg";
 /* SVGR has dropped some elements not supported by react-native-svg: filter */
 import { memo } from "react";
 const Rank1Icon = (props: SvgProps) => (
-  <Svg width={24} viewBox="0 0 24 24" height={24} fill="none" {...props}>
+  <Svg width={34} height={34} fill="none" {...props}>
     <G filter="url(#a)">
       <Path
         fill="#F5FB4E"
