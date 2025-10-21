@@ -1,10 +1,10 @@
 import { Colors } from "@/constants/theme";
 import { rf, rw } from "@/utils/dimensions";
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import PlusIcon from "../icons/PlusIcon";
 
-export default function NameInput() {
+function NameInput() {
   return (
     <View style={styles.container}>
       <View style={styles.secContainer}>
@@ -36,3 +36,5 @@ const styles = StyleSheet.create({
     fontSize: rf(32),
   },
 });
+
+export default memo(NameInput);

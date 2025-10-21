@@ -1,14 +1,10 @@
 import { Colors, Fonts } from "@/constants/theme";
 import { rf, rh, rw } from "@/utils/dimensions";
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-paper";
 import PlusIcon from "../icons/PlusIcon";
-export default function AddButton({
-  setModelAddPlayer,
-}: {
-  setModelAddPlayer: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+function AddButton({ openModel }: { openModel: () => void }) {
   return (
     <View style={{ alignContent: "center" }}>
       <Button
@@ -16,7 +12,7 @@ export default function AddButton({
         buttonColor={Colors.addBtn}
         labelStyle={styles.label}
         icon={() => <PlusIcon />}
-        onPress={() => setModelAddPlayer(true)}
+        onPress={openModel}
       >
         اضافه
       </Button>
@@ -37,3 +33,5 @@ const styles = StyleSheet.create({
     paddingTop: rh(5),
   },
 });
+
+export default memo(AddButton);

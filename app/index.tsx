@@ -3,12 +3,18 @@ import LeaderBoard from "@/components/Leaderboard";
 import AddPlayerModel from "@/components/Models/AddPlayerModel";
 import { Colors, Fonts } from "@/constants/theme";
 import { rf, rh, rw } from "@/utils/dimensions";
-import { Link } from "expo-router";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
   const [modelAddPlayer, setModelAddPlayer] = useState(false);
+
+  const openModel = useCallback(() => {
+    setModelAddPlayer(true);
+  }, []);
+  const closeModel = useCallback(() => {
+    setModelAddPlayer(false);
+  }, []);
 
   return (
     <>
@@ -22,14 +28,10 @@ export default function HomeScreen() {
           <LeaderBoard />
         </View>
         <View style={styles.sectionAddBtn}>
-          <AddButton setModelAddPlayer={setModelAddPlayer} />
+          <AddButton openModel={openModel} />
         </View>
-        <Link href={"/GameScreen"}>Game button</Link>
       </View>
-      <AddPlayerModel
-        modelAddPlayer={modelAddPlayer}
-        setModelAddPlayer={setModelAddPlayer}
-      />
+      <AddPlayerModel modelAddPlayer={modelAddPlayer} closeModel={closeModel} />
     </>
   );
 }

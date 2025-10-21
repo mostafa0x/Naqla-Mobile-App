@@ -4,13 +4,11 @@ import { Colors } from "@/constants/theme";
 import { AddPlayerModelType } from "@/types/AddPlayerModelType";
 import { rh, rw } from "@/utils/dimensions";
 import { BlurView } from "expo-blur";
-import React from "react";
+import React, { memo } from "react";
 import { Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 import { Portal } from "react-native-paper";
-export default function AddPlayerModel({
-  modelAddPlayer,
-  setModelAddPlayer,
-}: AddPlayerModelType) {
+
+function AddPlayerModel({ modelAddPlayer, closeModel }: AddPlayerModelType) {
   return (
     <Portal>
       {modelAddPlayer && (
@@ -24,7 +22,7 @@ export default function AddPlayerModel({
         <View style={styles.contant}>
           <View style={styles.box}>
             <TouchableOpacity style={styles.closeBtn}>
-              <TouchableOpacity onPress={() => setModelAddPlayer(false)}>
+              <TouchableOpacity onPress={closeModel}>
                 <CloseIcon />
               </TouchableOpacity>
             </TouchableOpacity>
@@ -61,3 +59,5 @@ const styles = StyleSheet.create({
   },
   test: { backgroundColor: "rgba(255,255,255,0.2)" },
 });
+
+export default memo(AddPlayerModel);
