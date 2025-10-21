@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     textAlign: "right",
     color: Colors.primaryText,
     fontSize: rf(32),
+    width: rw(280),
   },
 });
 
