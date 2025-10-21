@@ -1,11 +1,11 @@
+import Rank1Icon from "@/components/icons/Rank1Icon";
+import Rank2Icon from "@/components/icons/Rank2Icon";
+import Rank3Icon from "@/components/icons/Rank3Icon";
 import { Colors, Fonts } from "@/constants/theme";
 import { ItemLeaderBoardTypes } from "@/types/ItemLeaderBoardTypes";
 import { rf, rh, rw } from "@/utils/dimensions";
 import React, { memo, useMemo } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Rank1Icon from "../../Rank1Icon";
-import Rank2Icon from "../../Rank2Icon";
-import Rank3Icon from "../../Rank3Icon";
 
 function Item_LeaderBoard({
   userData: { playerName = "empty", winCount = 0, loseCount = 0, rank = 1 },

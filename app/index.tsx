@@ -1,4 +1,5 @@
-import LeaderBoard from "@/components/icons/Leaderboard";
+import AddButton from "@/components/AddButton";
+import LeaderBoard from "@/components/Leaderboard";
 import { Colors, Fonts } from "@/constants/theme";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { Link } from "expo-router";
@@ -12,7 +13,12 @@ export default function HomeScreen() {
           <Text style={styles.mainLabel}>اسياد اللعبه</Text>
         </View>
       </View>
-      <LeaderBoard />
+      <View style={styles.sectionLeaderBoard}>
+        <LeaderBoard />
+      </View>
+      <View style={styles.sectionAddBtn}>
+        <AddButton />
+      </View>
       <Link href={"/GameScreen"}>Game button</Link>
     </View>
   );
@@ -32,5 +38,10 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.TajawalBold,
     color: Colors.primaryText,
     textAlign: "center",
+  },
+  sectionLeaderBoard: {},
+  sectionAddBtn: {
+    marginTop: rh(146),
+    alignSelf: "flex-end",
   },
 });
