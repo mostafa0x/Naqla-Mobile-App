@@ -4,7 +4,11 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-paper";
 import PlusIcon from "../icons/PlusIcon";
-export default function AddButton() {
+export default function AddButton({
+  setModelAddPlayer,
+}: {
+  setModelAddPlayer: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <View style={{ alignContent: "center" }}>
       <Button
@@ -12,6 +16,7 @@ export default function AddButton() {
         buttonColor={Colors.addBtn}
         labelStyle={styles.label}
         icon={() => <PlusIcon />}
+        onPress={() => setModelAddPlayer(true)}
       >
         اضافه
       </Button>

@@ -16,4 +16,5 @@ export const Colors = {
   notMyTurnBg: "#989898",
   nameBg: "#595757",
   addBtn: "#F2C709",
+  placeholder: "#A2A2A2",
 };

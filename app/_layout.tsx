@@ -4,9 +4,10 @@ import { store } from "@/lib/store";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { Provider } from "react-native-paper";
 import "react-native-reanimated";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { Provider } from "react-redux";
+import { Provider as ReduxProvider } from "react-redux";
 export default function RootLayout() {
   const [isLoadFonts] = useFonts({
     TajawalBlack: require("@/assets/fonts/Tajawal-Black.ttf"),
@@ -18,20 +19,22 @@ export default function RootLayout() {
     return null;
   }
   return (
-    <Provider store={store}>
+    <ReduxProvider store={store}>
       <AllProvidersContext>
-        <SafeAreaProvider>
-          <SafeAreaView style={{ flex: 1 }}>
-            <Stack
-              screenOptions={{
-                headerShown: false,
-                contentStyle: { backgroundColor: Colors.bg },
-              }}
-            />
-            <StatusBar style="light" backgroundColor="black" />
-          </SafeAreaView>
-        </SafeAreaProvider>
+        <Provider>
+          <SafeAreaProvider>
+            <SafeAreaView style={{ flex: 1 }}>
+              <Stack
+                screenOptions={{
+                  headerShown: false,
+                  contentStyle: { backgroundColor: Colors.bg },
+                }}
+              />
+              <StatusBar style="light" backgroundColor="black" />
+            </SafeAreaView>
+          </SafeAreaProvider>
+        </Provider>
       </AllProvidersContext>
-    </Provider>
+    </ReduxProvider>
   );
 }
