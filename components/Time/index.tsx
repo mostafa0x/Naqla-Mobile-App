@@ -1,9 +1,9 @@
 import { Colors, Fonts } from "@/constants/theme";
 import { rf, rh, rw } from "@/utils/dimensions";
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Time({ label = "0 د.ق" }: { label: string }) {
+function Time({ label = "0 د.ق" }: { label: string }) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
@@ -26,3 +26,5 @@ const styles = StyleSheet.create({
     color: Colors.primaryText,
   },
 });
+
+export default memo(Time);
