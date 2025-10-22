@@ -5,6 +5,7 @@ export default function handelAddPlayer(
   nameTxt: string,
   closeModel: () => void
 ) {
+  if (nameTxt.length < 3) return undefined;
   dispatch(addPlayer({ name: nameTxt, winCount: 0, loseCount: 0 }));
   closeModel();
 }

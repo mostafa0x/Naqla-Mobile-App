@@ -31,14 +31,6 @@ function Item_LeaderBoard({
           {playerName}
         </Text>
       </View>
-      <View style={styles.botSection}>
-        <View style={styles.winBar}>
-          <Text style={styles.count}>{winCount}</Text>
-        </View>
-        <View style={styles.loseBar}>
-          <Text style={styles.count}>{loseCount}</Text>
-        </View>
-      </View>
     </View>
   );
 }
@@ -56,7 +48,7 @@ const styles = StyleSheet.create({
     marginBottom: rh(6),
   },
   topSectionEdit: {
-    width: rw(81),
+    width: rw(125),
     height: rh(38),
   },
   botSection: {
@@ -66,40 +58,21 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: Colors.primaryText,
     fontFamily: Fonts.TajawalMedium,
-    lineHeight: rh(30),
-    fontSize: rh(25),
+    lineHeight: rf(30),
+    fontSize: rf(25),
   },
   labelNameEdit: {
-    fontSize: rh(15),
-    lineHeight: rh(18),
+    fontSize: rf(22),
+    lineHeight: rf(22),
   },
-  winBar: {
-    width: rw(87),
-    height: rh(14),
-    backgroundColor: Colors.winCount,
-    borderRadius: rw(5),
-  },
-  loseBar: {
-    width: rw(87),
-    height: rh(14),
-    backgroundColor: Colors.loseCount,
-    borderRadius: rw(5),
-  },
-  count: {
-    color: Colors.primaryText,
-    fontFamily: Fonts.TajawalBlack,
-    fontSize: rf(10),
-    textAlign: "center",
-  },
+
   rank1Icon: {
     alignSelf: "center",
   },
   rank2Icon: {
-    alignSelf: "flex-end",
     paddingRight: rw(5),
   },
   rank3Icon: {
-    alignSelf: "flex-start",
     paddingLeft: rw(5),
   },
 });

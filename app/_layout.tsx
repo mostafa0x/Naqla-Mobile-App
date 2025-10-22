@@ -31,7 +31,7 @@ export default function RootLayout() {
                   contentStyle: { backgroundColor: Colors.bg },
                 }}
               />
-              <StatusBar style="light" backgroundColor="black" />
+              <StatusBar style="light" backgroundColor="black" hidden />
             </SafeAreaView>
           </SafeAreaProvider>
         </Provider>

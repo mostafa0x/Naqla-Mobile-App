@@ -1,4 +1,5 @@
 import { Colors, Fonts } from "@/constants/theme";
+import { useAppSelector } from "@/hooks/useStore";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { Router } from "expo-router";
 import React, { memo, useCallback } from "react";
@@ -7,9 +8,14 @@ import { Button } from "react-native-paper";
 
 function StartButton({ router }: { router: Router }) {
   const handlePress = useCallback(() => router.push("/GameScreen"), [router]);
-
+  const { players } = useAppSelector((state) => state.AppReducer);
+  const active = players.length >= 2;
   return (
-    <Button onPress={handlePress} labelStyle={styles.label} style={styles.btn}>
+    <Button
+      onPress={handlePress}
+      labelStyle={styles.label}
+      style={[styles.btn, active && styles.active]}
+    >
       يلا بينا
     </Button>
   );
@@ -19,13 +25,16 @@ const styles = StyleSheet.create({
   btn: {
     width: rw(300),
     height: rh(62),
-    backgroundColor: Colors.startBtn,
+    backgroundColor: "#929090ff",
   },
   label: {
     fontFamily: Fonts.TajawalBlack,
     fontSize: rf(40),
     color: Colors.primaryText,
     lineHeight: rf(42),
+  },
+  active: {
+    backgroundColor: Colors.startBtn,
   },
 });
 

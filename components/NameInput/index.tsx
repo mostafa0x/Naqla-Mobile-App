@@ -33,6 +33,9 @@ function NameInput({ closeModel }: { closeModel: () => void }) {
           placeholder="الاسم"
           value={nameTxt}
           onChangeText={setNameTxt}
+          onSubmitEditing={() =>
+            activeIcon && handelAddPlayer(dispatch, nameTxt, closeModel)
+          }
         />
       </View>
     </View>

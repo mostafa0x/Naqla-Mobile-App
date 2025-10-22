@@ -6,10 +6,13 @@ import { StyleSheet, Text, View } from "react-native";
 import ItemVs from "./item";
 
 export default function VS() {
-  const { players } = useAppSelector((state) => state.AppReducer);
+  const { players, player1Index, player2Index } = useAppSelector(
+    (state) => state.AppReducer
+  );
+
   return (
     <View style={styles.container}>
-      {players.length <= 2 ? (
+      {players.length < 2 ? (
         <View style={styles.emptyMessContainer}>
           <Text style={styles.emptyMess}>
             عدد الاعبين غير كافي اقل من اتنين
@@ -17,9 +20,9 @@ export default function VS() {
         </View>
       ) : (
         <>
-          <ItemVs />
+          <ItemVs player={players[player1Index]} side={1} />
           <Text style={styles.vs}>VS</Text>
-          <ItemVs />
+          <ItemVs player={players[player2Index]} side={2} />
         </>
       )}
     </View>
