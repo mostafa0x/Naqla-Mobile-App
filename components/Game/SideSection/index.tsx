@@ -1,27 +1,49 @@
 import { Colors, Fonts } from "@/constants/theme";
+import { useAppDispatch } from "@/hooks/useStore";
+import { formatTime } from "@/service/formatTime";
+import handleChangeStatusGame from "@/service/handleChangeStatusGame";
 import { SideSectionType } from "@/types/SideSectionType";
 import { rf } from "@/utils/dimensions";
 import React, { memo } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import NameSection from "../NameSection";
 
-function SideSection({ side, player }: SideSectionType) {
+function SideSection({
+  side,
+  player,
+  time,
+  turn,
+  statusGame,
+}: SideSectionType) {
+  const dispatch = useAppDispatch();
   return (
-    <View style={[styles.container, side === 2 && styles.containerRotate]}>
+    <TouchableOpacity
+      onPress={() =>
+        turn === side && handleChangeStatusGame(dispatch, statusGame)
+      }
+      style={[
+        styles.container,
+        side === 2 && styles.containerRotate,
+        turn === side && styles.myTurn,
+      ]}
+    >
       <NameSection label={player.name} side={side} />
       <Text style={[styles.timeLabel, side === 2 && styles.timeLabelSide2]}>
-        10 : 50
+        {formatTime(time)}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "blue",
+    backgroundColor: Colors.notMyTurnBg,
     flex: 3,
     justifyContent: "center",
     alignItems: "center",
+  },
+  myTurn: {
+    backgroundColor: Colors.myTurnBg,
   },
   containerRotate: {
     transform: [{ rotate: "179.35deg" }],
