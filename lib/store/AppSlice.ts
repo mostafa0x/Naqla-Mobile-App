@@ -12,7 +12,6 @@ const initialState: AppSliceType = {
   ],
   player1Index: 0,
   player2Index: 1,
-  isChangeingPlayers: false,
 };
 const AppSlice = createSlice({
   name: "AppSlice",
