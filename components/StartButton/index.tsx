@@ -1,12 +1,15 @@
 import { Colors, Fonts } from "@/constants/theme";
 import { rf, rh, rw } from "@/utils/dimensions";
-import React, { memo } from "react";
+import { Router } from "expo-router";
+import React, { memo, useCallback } from "react";
 import { StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 
-function StartButton() {
+function StartButton({ router }: { router: Router }) {
+  const handlePress = useCallback(() => router.push("/GameScreen"), [router]);
+
   return (
-    <Button labelStyle={styles.label} style={styles.btn}>
+    <Button onPress={handlePress} labelStyle={styles.label} style={styles.btn}>
       يلا بينا
     </Button>
   );

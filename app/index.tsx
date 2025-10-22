@@ -5,10 +5,12 @@ import StartButton from "@/components/StartButton";
 import VS from "@/components/Vs";
 import { Colors, Fonts } from "@/constants/theme";
 import { rf, rh, rw } from "@/utils/dimensions";
+import { useRouter } from "expo-router";
 import { useCallback, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
+  const router = useRouter();
   const [modelAddPlayer, setModelAddPlayer] = useState(false);
 
   const openModel = useCallback(() => {
@@ -36,7 +38,7 @@ export default function HomeScreen() {
           <VS />
         </View>
         <View style={styles.startBtn}>
-          <StartButton />
+          <StartButton router={router} />
         </View>
       </View>
       <AddPlayerModel modelAddPlayer={modelAddPlayer} closeModel={closeModel} />
