@@ -6,9 +6,9 @@ import { StyleSheet, View } from "react-native";
 export default function GameScreen() {
   return (
     <View style={styles.container}>
-      <SideSection />
+      <SideSection side={2} />
       <MidSection />
-      <SideSection />
+      <SideSection side={1} />
     </View>
   );
 }

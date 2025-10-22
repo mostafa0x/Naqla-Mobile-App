@@ -1,1 +1,3 @@
-export interface SideSectionType {}
+export interface SideSectionType {
+  side: 1 | 2;
+}
