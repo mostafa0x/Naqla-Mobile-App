@@ -7,12 +7,7 @@ import NameSection from "../NameSection";
 
 export default function SideSection({ side }: SideSectionType) {
   return (
-    <View
-      style={[
-        styles.container,
-        side === 2 && { transform: [{ rotate: "179.35deg" }] },
-      ]}
-    >
+    <View style={[styles.container, side === 2 && styles.containerRotate]}>
       <NameSection label="sasa" side={side} />
       <Text style={[styles.timeLabel, side === 2 && styles.timeLabelSide2]}>
         10 : 50
@@ -27,6 +22,9 @@ const styles = StyleSheet.create({
     flex: 3,
     justifyContent: "center",
     alignItems: "center",
+  },
+  containerRotate: {
+    transform: [{ rotate: "179.35deg" }],
   },
   timeLabel: {
     fontFamily: Fonts.TajawalLight,

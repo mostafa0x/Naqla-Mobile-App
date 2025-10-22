@@ -26,7 +26,7 @@ function AddPlayerModel({ modelAddPlayer, closeModel }: AddPlayerModelType) {
                 <CloseIcon />
               </TouchableOpacity>
             </TouchableOpacity>
-            <NameInput />
+            <NameInput closeModel={closeModel} />
           </View>
         </View>
       </Modal>
