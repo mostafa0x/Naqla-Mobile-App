@@ -18,15 +18,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.nameBg,
     borderTopLeftRadius: rw(20),
     borderTopRightRadius: rw(20),
-
     alignItems: "center",
     position: "absolute",
     left: rw(87.68),
     bottom: rh(-15),
   },
   nameSide2: {
-    top: rh(-20),
-    justifyContent: "flex-end",
     borderBottomLeftRadius: rw(20),
     borderBottomRightRadius: rw(20),
   },

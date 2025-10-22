@@ -13,6 +13,7 @@ export default function RootLayout() {
     TajawalBlack: require("@/assets/fonts/Tajawal-Black.ttf"),
     TajawalBold: require("@/assets/fonts/Tajawal-Bold.ttf"),
     TajawalMedium: require("@/assets/fonts/Tajawal-Medium.ttf"),
+    TajawalLight: require("@/assets/fonts/Tajawal-Light.ttf"),
   });
 
   if (!isLoadFonts) {

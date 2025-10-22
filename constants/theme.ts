@@ -2,6 +2,7 @@ export const Fonts = {
   TajawalBlack: "TajawalBlack",
   TajawalBold: "TajawalBold",
   TajawalMedium: "TajawalMedium",
+  TajawalLight: "TajawalLight",
 };
 
 export const Colors = {
