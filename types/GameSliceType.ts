@@ -5,6 +5,7 @@ export interface GameSliceType {
   player2Moves: number;
   turn: 1 | 2;
   statusGame: statusGame;
+  mainTime: number;
 }
 
 export type statusGame = "waiting" | "playing" | "pause";

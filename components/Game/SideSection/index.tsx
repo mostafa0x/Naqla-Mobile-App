@@ -1,7 +1,7 @@
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppDispatch } from "@/hooks/useStore";
 import { formatTime } from "@/service/formatTime";
-import handleChangeStatusGame from "@/service/handleChangeStatusGame";
+import handleClickSides from "@/service/handleClickSides";
 import { SideSectionType } from "@/types/SideSectionType";
 import { rf } from "@/utils/dimensions";
 import React, { memo } from "react";
@@ -18,9 +18,7 @@ function SideSection({
   const dispatch = useAppDispatch();
   return (
     <TouchableOpacity
-      onPress={() =>
-        turn === side && handleChangeStatusGame(dispatch, statusGame)
-      }
+      onPress={() => turn === side && handleClickSides(dispatch, statusGame)}
       style={[
         styles.container,
         side === 2 && styles.containerRotate,

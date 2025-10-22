@@ -1,7 +1,7 @@
 import { setStatusGame, setTurn } from "@/lib/store/GameSlice";
 import { statusGame } from "@/types/GameSliceType";
 
-export default function handleChangeStatusGame(
+export default function handleClickSides(
   dispatch: any,
   statusGame: statusGame
 ) {
@@ -9,6 +9,7 @@ export default function handleChangeStatusGame(
     dispatch(setTurn());
   } else if (statusGame === "pause") {
     dispatch(setStatusGame("playing"));
+  } else if (statusGame === "waiting") {
+    dispatch(setStatusGame("playing"));
   }
-  console.log("x");
 }

@@ -7,7 +7,8 @@ const initialState: GameSliceType = {
   player1Moves: 0,
   player2Moves: 0,
   turn: 1,
-  statusGame: "playing",
+  statusGame: "waiting",
+  mainTime: 1,
 };
 const GameSlice = createSlice({
   name: "GameSlice",
