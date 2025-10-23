@@ -10,9 +10,14 @@ export default function GameScreen() {
   const { players, player1Index, player2Index } = useAppSelector(
     (state) => state.AppReducer
   );
-  const { player1Time, player2Time, statusGame, turn } = useAppSelector(
-    (state) => state.GameReducer
-  );
+  const {
+    player1Time,
+    player2Time,
+    statusGame,
+    turn,
+    player1Moves,
+    player2Moves,
+  } = useAppSelector((state) => state.GameReducer);
 
   useEffect(() => {
     let time = 0;
@@ -34,6 +39,7 @@ export default function GameScreen() {
         turn={turn}
         time={player2Time}
         statusGame={statusGame}
+        moves={player2Moves}
       />
       <MidSection statusGame={statusGame} />
       <SideSection
@@ -42,6 +48,7 @@ export default function GameScreen() {
         turn={turn}
         time={player1Time}
         statusGame={statusGame}
+        moves={player1Moves}
       />
     </View>
   );

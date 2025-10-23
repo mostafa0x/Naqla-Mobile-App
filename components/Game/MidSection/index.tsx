@@ -1,6 +1,3 @@
-import PlayIcon from "@/components/icons/PlayIcon";
-import RestartIcon from "@/components/icons/RestartIcon";
-import Time from "@/components/Time";
 import { useAppDispatch } from "@/hooks/useStore";
 import { setStatusGame } from "@/lib/store/GameSlice";
 import { statusGame } from "@/types/GameSliceType";
@@ -9,20 +6,23 @@ import React, { memo } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-paper";
 function MidSection({ statusGame }: { statusGame: statusGame }) {
+  const iconSize = 42;
   const dispatch = useAppDispatch();
   return (
     <View style={styles.container}>
       {statusGame === "playing" ? (
         <TouchableOpacity onPress={() => dispatch(setStatusGame("pause"))}>
-          <Icon source={"pause"} size={rw(40)} />
+          <Icon source={"pause"} size={rw(iconSize)} />
         </TouchableOpacity>
       ) : (
         <TouchableOpacity onPress={() => dispatch(setStatusGame("playing"))}>
-          <PlayIcon />
+          <Icon source={"play"} size={rw(iconSize)} />
         </TouchableOpacity>
       )}
-      <Time label="15 د.ق" />
-      <RestartIcon />
+
+      <Icon source={"timer-cog-outline"} size={rw(iconSize)} />
+
+      <Icon source={"restore"} size={rw(iconSize)} />
     </View>
   );
 }

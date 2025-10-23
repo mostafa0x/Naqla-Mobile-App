@@ -7,4 +7,5 @@ export interface SideSectionType {
   time: number;
   turn: 1 | 2;
   statusGame: statusGame;
+  moves: number;
 }

@@ -6,7 +6,7 @@ const initialState: GameSliceType = {
   player2Time: 600,
   player1Moves: 0,
   player2Moves: 0,
-  turn: 1,
+  turn: 2,
   statusGame: "waiting",
   mainTime: 1,
 };
@@ -26,7 +26,9 @@ const GameSlice = createSlice({
       state.statusGame = action.payload;
     },
     setTurn: (state) => {
-      state.turn = state.turn == 1 ? 2 : 1;
+      const prevTurn = state.turn;
+      prevTurn == 1 ? (state.player1Moves += 1) : (state.player2Moves += 1);
+      state.turn = prevTurn == 1 ? 2 : 1;
     },
   },
 });

@@ -22,10 +22,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: rw(87.68),
     bottom: rh(-15),
+    zIndex: 9999,
   },
   nameSide2: {
+    top: rh(-10),
     borderBottomLeftRadius: rw(20),
     borderBottomRightRadius: rw(20),
+    transform: [{ rotate: "179.35deg" }],
   },
   label: {
     fontFamily: Fonts.TajawalBold,
