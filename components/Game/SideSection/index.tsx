@@ -6,7 +6,6 @@ import { SideSectionType } from "@/types/SideSectionType";
 import { rf, rh, rw } from "@/utils/dimensions";
 import React, { memo } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import NameSection from "../NameSection";
 
 function SideSection({
   side,
@@ -19,7 +18,6 @@ function SideSection({
   const dispatch = useAppDispatch();
   return (
     <>
-      <NameSection label={player.name} side={side} />
       <TouchableOpacity
         disabled={side !== turn}
         onPress={() => turn === side && handleClickSides(dispatch, statusGame)}
@@ -29,6 +27,11 @@ function SideSection({
           turn === side && styles.myTurn,
         ]}
       >
+        <View style={styles.NameContainer}>
+          <Text numberOfLines={1} style={styles.nameLabel}>
+            {player.name}
+          </Text>
+        </View>
         <View style={styles.movesContainer}>
           <Text numberOfLines={1} style={styles.movesLabel}>
             Moves:{moves}
@@ -53,6 +56,16 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: rw(10),
     top: rh(10),
+  },
+  NameContainer: {
+    position: "absolute",
+    left: rw(10),
+    top: rh(10),
+  },
+  nameLabel: {
+    fontFamily: Fonts.TajawalBold,
+    fontSize: rf(24),
+    color: Colors.primaryText,
   },
   movesLabel: {
     fontFamily: Fonts.TajawalLight,

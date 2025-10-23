@@ -1,5 +1,5 @@
 import { useAppDispatch } from "@/hooks/useStore";
-import { setStatusGame } from "@/lib/store/GameSlice";
+import { restartGame, setStatusGame } from "@/lib/store/GameSlice";
 import { statusGame } from "@/types/GameSliceType";
 import { rh, rw } from "@/utils/dimensions";
 import React, { memo } from "react";
@@ -31,7 +31,9 @@ function MidSection({ statusGame }: { statusGame: statusGame }) {
 
       <Icon source={"timer-cog-outline"} size={rw(iconSize)} />
 
-      <Icon source={"restore"} size={rw(iconSize)} />
+      <TouchableOpacity onPress={() => dispatch(restartGame())}>
+        <Icon source={"restore"} size={rw(iconSize)} />
+      </TouchableOpacity>
     </View>
   );
 }
