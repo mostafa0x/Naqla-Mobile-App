@@ -28,7 +28,9 @@ function MidSection({ statusGame }: { statusGame: statusGame }) {
           <Icon source={"play"} size={rw(iconSize)} />
         </TouchableOpacity>
       )}
-
+      <TouchableOpacity onPress={() => dispatch(restartGame())}>
+        <Icon source={"progress-check"} size={rw(iconSize)} />
+      </TouchableOpacity>
       <Icon source={"timer-cog-outline"} size={rw(iconSize)} />
 
       <TouchableOpacity onPress={() => dispatch(restartGame())}>

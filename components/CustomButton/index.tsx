@@ -32,7 +32,7 @@ function CustomButton({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.startBtn,
+    backgroundColor: "#407BFF",
     width: rw(124),
     height: rh(49),
     borderRadius: rw(20),

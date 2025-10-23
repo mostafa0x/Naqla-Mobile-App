@@ -1,4 +1,5 @@
 import AddButton from "@/components/AddButton";
+import Ellipses from "@/components/Ellipses";
 import LeaderBoard from "@/components/Leaderboard";
 import AddPlayerModel from "@/components/Models/AddPlayerModel";
 import StartButton from "@/components/StartButton";
@@ -30,6 +31,9 @@ export default function HomeScreen() {
 
   return (
     <>
+      <Ellipses type={1} />
+      <Ellipses type={2} />
+
       <View style={styles.container}>
         <View style={styles.topSection}>
           <View>

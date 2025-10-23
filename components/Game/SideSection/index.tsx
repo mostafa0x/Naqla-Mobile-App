@@ -34,7 +34,7 @@ function SideSection({
         </View>
         <View style={styles.movesContainer}>
           <Text numberOfLines={1} style={styles.movesLabel}>
-            Moves:{moves}
+            Moves: {moves}
           </Text>
         </View>
         <Text style={[styles.timeLabel, side === 2 && styles.timeLabelSide2]}>

@@ -1,5 +1,6 @@
 import MidSection from "@/components/Game/MidSection";
 import SideSection from "@/components/Game/SideSection";
+import SelectWinner from "@/components/Models/SelectWinner";
 import WiningModel from "@/components/Models/WiningModel";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { gameOver } from "@/lib/store/AppSlice";
@@ -76,6 +77,7 @@ export default function GameScreen() {
           statusGame === "winP1" || statusGame === "winP2" ? statusGame : null
         }
       />
+      <SelectWinner />
     </>
   );
 }
