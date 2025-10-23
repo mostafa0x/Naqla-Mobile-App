@@ -1,4 +1,3 @@
-import AddButton from "@/components/AddButton";
 import Ellipses from "@/components/Ellipses";
 import LeaderBoard from "@/components/Leaderboard";
 import AddPlayerModel from "@/components/Models/AddPlayerModel";
@@ -40,12 +39,10 @@ export default function HomeScreen() {
             <Text style={styles.mainLabel}>نقلة | Naqla</Text>
           </View>
         </View>
-        <View style={styles.sectionLeaderBoard}>
-          <LeaderBoard />
+        <View>
+          <LeaderBoard openModel={openModel} />
         </View>
-        <View style={styles.sectionAddBtn}>
-          <AddButton openModel={openModel} />
-        </View>
+
         <View style={styles.sectionVs}>
           <VS />
         </View>
@@ -73,11 +70,7 @@ const styles = StyleSheet.create({
     color: Colors.primaryText,
     textAlign: "center",
   },
-  sectionLeaderBoard: {},
-  sectionAddBtn: {
-    marginTop: rh(70),
-    alignSelf: "flex-end",
-  },
+
   sectionVs: {
     marginTop: rh(54),
   },

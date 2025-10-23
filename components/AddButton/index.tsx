@@ -1,33 +1,34 @@
 import { Colors, Fonts } from "@/constants/theme";
 import { rf, rh, rw } from "@/utils/dimensions";
 import React, { memo } from "react";
-import { StyleSheet, View } from "react-native";
-import { Button } from "react-native-paper";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import PlusIcon from "../icons/PlusIcon";
 function AddButton({ openModel }: { openModel: () => void }) {
   return (
-    <View style={{ alignContent: "center" }}>
-      <Button
-        style={styles.btn}
-        buttonColor={Colors.addBtn}
-        labelStyle={styles.label}
-        icon={() => <PlusIcon />}
-        onPress={openModel}
-      >
-        Add
-      </Button>
-    </View>
+    <TouchableOpacity onPress={openModel} style={styles.container}>
+      <PlusIcon />
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    marginBottom: rh(12),
+    width: rw(24),
+    height: rw(24),
+    backgroundColor: Colors.bannaer,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: rw(10),
+  },
   btn: {
-    width: rw(130),
+    width: rw(90),
     height: rh(39),
     borderRadius: rw(20),
   },
   label: {
-    fontSize: rf(24),
+    fontSize: rf(16),
+    lineHeight: rf(18),
     fontFamily: Fonts.TajawalBold,
     color: Colors.primaryText,
     paddingTop: rh(5),
