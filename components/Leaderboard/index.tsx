@@ -15,6 +15,14 @@ function LeaderBoard({ openModel }: { openModel: () => void }) {
     return <View style={styles.spaceItem}></View>;
   }, []);
 
+  const listEmpty = useCallback(() => {
+    return (
+      <View style={styles.emptylistContainer}>
+        <Text style={styles.emptylistLabel}>There are no matches yet</Text>
+      </View>
+    );
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.mainContainer}>
@@ -31,10 +39,13 @@ function LeaderBoard({ openModel }: { openModel: () => void }) {
       </View>
       <View style={styles.list}>
         <FlashList
+          showsVerticalScrollIndicator={false}
           numColumns={1}
-          data={[1, 2]}
+          data={[]}
+          ListEmptyComponent={listEmpty}
           renderItem={renderItem}
           ItemSeparatorComponent={itemSeparator}
+          contentContainerStyle={styles.contentContainer}
         />
       </View>
     </View>
@@ -75,8 +86,20 @@ const styles = StyleSheet.create({
     width: "100%",
     height: rh(200),
   },
+  contentContainer: {
+    paddingBottom: rh(50),
+  },
   spaceItem: {
-    height: rh(20),
+    height: rh(33),
+  },
+  emptylistContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  emptylistLabel: {
+    fontFamily: Fonts.TajawalBold,
+    fontSize: rf(24),
+    color: Colors.placeholder,
   },
 });
 

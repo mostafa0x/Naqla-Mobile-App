@@ -24,4 +24,6 @@ export const Colors = {
   nameBg: "#1F3329",
   addBtn: "#2E8B57",
   placeholder: "#AAB7A6",
+
+  main: "#2E8B57",
 };

@@ -1,3 +1,4 @@
+import { Colors } from "@/constants/theme";
 import { useAppDispatch } from "@/hooks/useStore";
 import { restartGame, setStatusGame } from "@/lib/store/GameSlice";
 import { statusGame } from "@/types/GameSliceType";
@@ -54,7 +55,7 @@ function MidSection({
 const styles = StyleSheet.create({
   container: {
     height: rh(94),
-    backgroundColor: "black",
+    backgroundColor: Colors.bg,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
