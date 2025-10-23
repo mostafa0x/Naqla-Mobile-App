@@ -5,7 +5,13 @@ import { rh, rw } from "@/utils/dimensions";
 import React, { memo } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-paper";
-function MidSection({ statusGame }: { statusGame: statusGame }) {
+function MidSection({
+  statusGame,
+  openSelectModel,
+}: {
+  statusGame: statusGame;
+  openSelectModel: () => void;
+}) {
   const iconSize = 42;
   const dispatch = useAppDispatch();
   return (
@@ -28,7 +34,12 @@ function MidSection({ statusGame }: { statusGame: statusGame }) {
           <Icon source={"play"} size={rw(iconSize)} />
         </TouchableOpacity>
       )}
-      <TouchableOpacity onPress={() => dispatch(restartGame())}>
+      <TouchableOpacity
+        onPress={() => {
+          statusGame === "playing" && dispatch(setStatusGame("pause"));
+          openSelectModel();
+        }}
+      >
         <Icon source={"progress-check"} size={rw(iconSize)} />
       </TouchableOpacity>
       <Icon source={"timer-cog-outline"} size={rw(iconSize)} />

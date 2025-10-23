@@ -1,4 +1,5 @@
 import CustomButton from "@/components/CustomButton";
+import CloseIcon from "@/components/icons/CloseIcon";
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppSelector } from "@/hooks/useStore";
 import { rf, rh, rw } from "@/utils/dimensions";
@@ -7,28 +8,52 @@ import React, { memo } from "react";
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Portal } from "react-native-paper";
 
-function SelectWinner() {
+function SelectWinner({
+  isSelectWin,
+  closeSelectModel,
+}: {
+  isSelectWin: boolean;
+  closeSelectModel: () => void;
+}) {
   const { players, player1Index, player2Index } = useAppSelector(
     (state) => state.AppReducer
   );
   return (
     <Portal>
-      <BlurView
-        style={styles.blur}
-        intensity={500}
-        tint="systemChromeMaterialDark"
-      />
-      <Modal animationType="slide" transparent visible={true}>
+      {isSelectWin && (
+        <BlurView
+          style={styles.blur}
+          intensity={500}
+          tint="systemChromeMaterialDark"
+        />
+      )}
+      <Modal animationType="slide" transparent visible={isSelectWin}>
         <View style={styles.contant}>
           <View style={styles.box}>
-            <Text style={styles.mainLabel}></Text>
+            <Text style={styles.mainLabel}>اختر الفائز ؟</Text>
             <View style={styles.btnsContainer}>
-              <CustomButton label="العوده " type={1} />
+              <CustomButton
+                color={"#fff"}
+                colorTxt="#000"
+                label={players[player1Index].name}
+                type={3}
+              />
 
-              <CustomButton label="اعاده المباراه" type={2} />
+              <CustomButton label="تعادل" type={4} />
+              <CustomButton
+                color="#000"
+                colorTxt="#fff"
+                label={players[player2Index].name}
+                type={5}
+              />
             </View>
 
-            <TouchableOpacity style={styles.closeBtn}></TouchableOpacity>
+            <TouchableOpacity
+              onPress={closeSelectModel}
+              style={styles.closeBtn}
+            >
+              <CloseIcon color={"#fff"} />
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -43,8 +68,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   box: {
-    width: rw(300),
-    height: rh(200),
+    width: rw(250),
+    height: rh(420),
     borderRadius: rw(20),
     backgroundColor: Colors.bannaer,
     paddingLeft: rw(9),
@@ -54,8 +79,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   closeBtn: {
-    alignSelf: "flex-end",
-    paddingTop: rh(5),
+    paddingTop: rh(50),
   },
   blur: {
     flex: 1,
@@ -74,8 +98,9 @@ const styles = StyleSheet.create({
     color: Colors.primaryText,
   },
   btnsContainer: {
-    flexDirection: "row",
-    gap: rw(10),
+    flexDirection: "column",
+    gap: rw(36),
+    paddingTop: rh(15),
   },
 });
 

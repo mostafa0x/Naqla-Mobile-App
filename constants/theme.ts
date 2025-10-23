@@ -7,15 +7,19 @@ export const Fonts = {
 
 export const Colors = {
   primaryText: "#FFFFFF",
-  secondaryText: "#00224C",
-  bg: "#000000ff",
-  winCount: "#28FB39",
-  loseCount: "#C72828",
-  startBtn: "#2e54a5ff",
-  bannaer: "#17377cff",
-  myTurnBg: "#C72828",
-  notMyTurnBg: "#989898",
-  nameBg: "#595757",
-  addBtn: "#6d67c2ff",
-  placeholder: "#A2A2A2",
+  secondaryText: "#CFE1D5", // أخضر فاتح مائل للرمادي، مريح للنظر
+
+  bg: "#050705ff", // خلفية شبه سوداء فيها لمسة خضراء خفيفة
+  winCount: "#34D399", // أخضر فوز ناعم وحديث
+  loseCount: "#E74C3C", // أحمر خفيف للتباين
+
+  startBtn: "#2E8B57", // اللون الأساسي
+  bannaer: "#244935ff", // خلفية البانر أغمق بلمسة خضراء
+  bannaer2: "#1A2E23", // خلفية البانر أغمق بلمسة خضراء
+
+  myTurnBg: "#E74C3C", // دوري الحالي
+  notMyTurnBg: "#6B7B6A", // رمادي أخضر للدور الآخر
+  nameBg: "#1F3329", // خلفية الأسماء
+  addBtn: "#2E8B57", // ذهبي بسيط للتفاعل
+  placeholder: "#AAB7A6", // نص ثانوي فاتح
 };

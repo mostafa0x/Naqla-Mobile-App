@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   vs: {
     fontFamily: Fonts.TajawalBlack,
     fontSize: rf(36),
-    color: "#E51B1B",
+    color: "#fff",
   },
   emptyMessContainer: {
     flex: 1,

@@ -9,9 +9,13 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 function CustomButton({
   label = "Back",
   type,
+  color = "#2E8B57",
+  colorTxt = "#fff",
 }: {
   label: string;
-  type: 1 | 2;
+  type: number;
+  color?: string;
+  colorTxt?: string;
 }) {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -24,15 +28,17 @@ function CustomButton({
     }
   };
   return (
-    <TouchableOpacity onPress={handlePress} style={styles.container}>
-      <Text style={styles.lebel}>{label}</Text>
+    <TouchableOpacity
+      onPress={handlePress}
+      style={[styles.container, { backgroundColor: color }]}
+    >
+      <Text style={[styles.lebel, { color: colorTxt }]}>{label}</Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#407BFF",
     width: rw(124),
     height: rh(49),
     borderRadius: rw(20),

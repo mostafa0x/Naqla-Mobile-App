@@ -23,7 +23,7 @@ function AddPlayerModel({ modelAddPlayer, closeModel }: AddPlayerModelType) {
           <View style={styles.box}>
             <TouchableOpacity style={styles.closeBtn}>
               <TouchableOpacity onPress={closeModel}>
-                <CloseIcon />
+                <CloseIcon color={Colors.placeholder} />
               </TouchableOpacity>
             </TouchableOpacity>
             <NameInput closeModel={closeModel} />
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     width: rw(346),
     height: rh(107),
     borderRadius: rw(20),
-    backgroundColor: Colors.bannaer,
+    backgroundColor: Colors.bannaer2,
     paddingLeft: rw(9),
     paddingRight: rw(13),
   },

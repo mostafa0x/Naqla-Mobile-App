@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     width: rw(121),
     height: rh(51),
     borderRadius: rw(20),
-    backgroundColor: "#F1F3FC",
+    backgroundColor: Colors.bannaer,
     justifyContent: "center",
     alignItems: "center",
   },

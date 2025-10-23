@@ -5,11 +5,12 @@ import WiningModel from "@/components/Models/WiningModel";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { gameOver } from "@/lib/store/AppSlice";
 import { restartGame, subTime } from "@/lib/store/GameSlice";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 export default function GameScreen() {
   const dispatch = useAppDispatch();
+
   const { players, player1Index, player2Index } = useAppSelector(
     (state) => state.AppReducer
   );
@@ -21,6 +22,15 @@ export default function GameScreen() {
     player1Moves,
     player2Moves,
   } = useAppSelector((state) => state.GameReducer);
+
+  const [isSelectWin, setSelectWin] = useState(false);
+
+  const closeSelectModel = useCallback(() => {
+    setSelectWin(false);
+  }, []);
+  const openSelectModel = useCallback(() => {
+    setSelectWin(true);
+  }, []);
 
   useEffect(() => {
     let time = 0;
@@ -62,7 +72,7 @@ export default function GameScreen() {
           statusGame={statusGame}
           moves={player2Moves}
         />
-        <MidSection statusGame={statusGame} />
+        <MidSection statusGame={statusGame} openSelectModel={openSelectModel} />
         <SideSection
           side={1}
           player={players[player1Index]}
@@ -77,7 +87,10 @@ export default function GameScreen() {
           statusGame === "winP1" || statusGame === "winP2" ? statusGame : null
         }
       />
-      <SelectWinner />
+      <SelectWinner
+        isSelectWin={isSelectWin}
+        closeSelectModel={closeSelectModel}
+      />
     </>
   );
 }
