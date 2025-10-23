@@ -9,7 +9,11 @@ export default function Ellipses({ type }: { type: 1 | 2 }) {
   };
   return (
     <View style={[styles.container, type === 2 && styles.container2]}>
-      <Image style={styles.img} source={ellipsesImg[type]} />
+      <Image
+        cachePolicy={"memory-disk"}
+        style={styles.img}
+        source={ellipsesImg[type]}
+      />
     </View>
   );
 }

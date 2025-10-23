@@ -24,10 +24,11 @@ export default function RootLayout() {
       <AllProvidersContext>
         <Provider>
           <SafeAreaProvider>
-            <SafeAreaView style={{ flex: 1 }}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: Colors.bg }}>
               <Stack
                 screenOptions={{
                   headerShown: false,
+                  animation: "fade",
                   contentStyle: { backgroundColor: Colors.bg },
                 }}
               />

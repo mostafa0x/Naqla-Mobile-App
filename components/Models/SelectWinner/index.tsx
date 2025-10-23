@@ -37,14 +37,20 @@ function SelectWinner({
                 colorTxt="#000"
                 label={players[player1Index].name}
                 type={3}
+                closeSelectModel={closeSelectModel}
               />
 
-              <CustomButton label="Draw" type={4} />
+              <CustomButton
+                label="Draw"
+                type={4}
+                closeSelectModel={closeSelectModel}
+              />
               <CustomButton
                 color="#000"
                 colorTxt="#fff"
                 label={players[player2Index].name}
                 type={5}
+                closeSelectModel={closeSelectModel}
               />
             </View>
 

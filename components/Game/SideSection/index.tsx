@@ -17,38 +17,36 @@ function SideSection({
 }: SideSectionType) {
   const dispatch = useAppDispatch();
   return (
-    <>
-      <TouchableOpacity
-        disabled={side !== turn}
-        onPress={() => turn === side && handleClickSides(dispatch, statusGame)}
-        style={[
-          styles.container,
-          side === 2 && styles.containerRotate,
-          turn === side &&
-            (statusGame === "pause" || statusGame === "waiting"
-              ? styles.myTurnPause
-              : styles.myTurn),
-        ]}
-      >
-        <View style={styles.NameContainer}>
-          <Text numberOfLines={1} style={styles.nameLabel}>
-            {player.name}
-          </Text>
-        </View>
-        <View style={styles.movesContainer}>
-          <Text numberOfLines={1} style={styles.movesLabel}>
-            Moves: {moves}
-          </Text>
-        </View>
-        <Text style={[styles.timeLabel, side === 2 && styles.timeLabelSide2]}>
-          {formatTime(time)}
+    <TouchableOpacity
+      disabled={side !== turn}
+      onPress={() => turn === side && handleClickSides(dispatch, statusGame)}
+      style={[
+        styles.container,
+        side === 2 && styles.containerRotate,
+        turn === side &&
+          (statusGame === "pause" || statusGame === "waiting"
+            ? styles.myTurnPause
+            : styles.myTurn),
+      ]}
+    >
+      <View style={styles.NameContainer}>
+        <Text numberOfLines={1} style={styles.nameLabel}>
+          {player.name}
         </Text>
-        {side === turn &&
-          (statusGame === "pause" || statusGame === "waiting") && (
-            <Text style={styles.labelStart}>Tap to Start</Text>
-          )}
-      </TouchableOpacity>
-    </>
+      </View>
+      <View style={styles.movesContainer}>
+        <Text numberOfLines={1} style={styles.movesLabel}>
+          Moves: {moves}
+        </Text>
+      </View>
+      <Text style={[styles.timeLabel, side === 2 && styles.timeLabelSide2]}>
+        {formatTime(time)}
+      </Text>
+      {side === turn &&
+        (statusGame === "pause" || statusGame === "waiting") && (
+          <Text style={styles.labelStart}>Tap to Start</Text>
+        )}
+    </TouchableOpacity>
   );
 }
 

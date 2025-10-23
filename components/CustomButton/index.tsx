@@ -1,6 +1,7 @@
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppDispatch } from "@/hooks/useStore";
-import { restartGame } from "@/lib/store/GameSlice";
+import { setDraw } from "@/lib/store/AppSlice";
+import { restartGame, setStatusGame } from "@/lib/store/GameSlice";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { useRouter } from "expo-router";
 import React, { memo } from "react";
@@ -11,11 +12,13 @@ function CustomButton({
   type,
   color = "#2E8B57",
   colorTxt = "#fff",
+  closeSelectModel,
 }: {
   label: string;
   type: number;
   color?: string;
   colorTxt?: string;
+  closeSelectModel?: () => void;
 }) {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -25,6 +28,15 @@ function CustomButton({
       router.replace("/");
     } else if (type === 2) {
       dispatch(restartGame());
+    } else if (type === 3) {
+      dispatch(setStatusGame("winP1"));
+      closeSelectModel && closeSelectModel();
+    } else if (type === 4) {
+      dispatch(setDraw());
+      closeSelectModel && closeSelectModel();
+    } else if (type === 5) {
+      dispatch(setStatusGame("winP2"));
+      closeSelectModel && closeSelectModel();
     }
   };
   return (

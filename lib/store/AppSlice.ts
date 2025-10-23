@@ -69,8 +69,23 @@ const AppSlice = createSlice({
         state.players[state.player2Index] = newP2;
       }
     },
+    setDraw: (state) => {
+      const p1 = state.players[state.player1Index];
+      const p2 = state.players[state.player2Index];
+      const newP1 = {
+        ...p1,
+        drawCount: p1.drawCount + 1,
+      };
+      const newP2 = {
+        ...p2,
+        drawCount: p2.drawCount + 1,
+      };
+      state.players[state.player1Index] = newP1;
+      state.players[state.player2Index] = newP2;
+    },
   },
 });
 
 export const AppReducer = AppSlice.reducer;
-export const { addPlayer, changePlayersIndex, gameOver } = AppSlice.actions;
+export const { addPlayer, changePlayersIndex, gameOver, setDraw } =
+  AppSlice.actions;
