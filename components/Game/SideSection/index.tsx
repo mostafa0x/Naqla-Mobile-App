@@ -24,7 +24,10 @@ function SideSection({
         style={[
           styles.container,
           side === 2 && styles.containerRotate,
-          turn === side && styles.myTurn,
+          turn === side &&
+            (statusGame === "pause" || statusGame === "waiting"
+              ? styles.myTurnPause
+              : styles.myTurn),
         ]}
       >
         <View style={styles.NameContainer}>
@@ -40,6 +43,10 @@ function SideSection({
         <Text style={[styles.timeLabel, side === 2 && styles.timeLabelSide2]}>
           {formatTime(time)}
         </Text>
+        {side === turn &&
+          (statusGame === "pause" || statusGame === "waiting") && (
+            <Text style={styles.labelStart}>Tap to Start</Text>
+          )}
       </TouchableOpacity>
     </>
   );
@@ -75,6 +82,9 @@ const styles = StyleSheet.create({
   myTurn: {
     backgroundColor: Colors.myTurnBg,
   },
+  myTurnPause: {
+    backgroundColor: Colors.MyTurnBgWaiting,
+  },
   containerRotate: {
     transform: [{ rotate: "179.35deg" }],
   },
@@ -84,6 +94,11 @@ const styles = StyleSheet.create({
     color: Colors.primaryText,
   },
   timeLabelSide2: {},
+  labelStart: {
+    fontFamily: Fonts.TajawalLight,
+    fontSize: rf(24),
+    color: Colors.secondaryText,
+  },
 });
 
 export default memo(SideSection);

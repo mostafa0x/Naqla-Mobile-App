@@ -16,7 +16,7 @@ function StartButton({ router }: { router: Router }) {
       labelStyle={styles.label}
       style={[styles.btn, active && styles.active]}
     >
-      يلا بينا
+      Start Game
     </Button>
   );
 }
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.TajawalBlack,
     fontSize: rf(40),
     color: Colors.primaryText,
-    lineHeight: rf(42),
+    lineHeight: rf(56),
   },
   active: {
     backgroundColor: Colors.startBtn,

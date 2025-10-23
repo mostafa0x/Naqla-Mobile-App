@@ -14,7 +14,7 @@ function AddButton({ openModel }: { openModel: () => void }) {
         icon={() => <PlusIcon />}
         onPress={openModel}
       >
-        اضافه
+        Add
       </Button>
     </View>
   );

@@ -30,7 +30,7 @@ function SelectWinner({
       <Modal animationType="slide" transparent visible={isSelectWin}>
         <View style={styles.contant}>
           <View style={styles.box}>
-            <Text style={styles.mainLabel}>اختر الفائز ؟</Text>
+            <Text style={styles.mainLabel}>Choose the winner ?</Text>
             <View style={styles.btnsContainer}>
               <CustomButton
                 color={"#fff"}
@@ -39,7 +39,7 @@ function SelectWinner({
                 type={3}
               />
 
-              <CustomButton label="تعادل" type={4} />
+              <CustomButton label="Draw" type={4} />
               <CustomButton
                 color="#000"
                 colorTxt="#fff"
@@ -52,7 +52,7 @@ function SelectWinner({
               onPress={closeSelectModel}
               style={styles.closeBtn}
             >
-              <CloseIcon color={"#fff"} />
+              <CloseIcon width={rw(42)} height={rh(42)} color={"#fff"} />
             </TouchableOpacity>
           </View>
         </View>

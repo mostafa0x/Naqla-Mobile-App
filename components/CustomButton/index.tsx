@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   lebel: {
     fontFamily: Fonts.TajawalBold,
-    fontSize: rf(18),
+    fontSize: rf(20),
     color: Colors.primaryText,
   },
 });

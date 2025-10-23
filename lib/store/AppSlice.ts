@@ -6,8 +6,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: AppSliceType = {
   players: [
-    { name: "x1", winCount: 0, loseCount: 0 },
-    { name: "x2", winCount: 0, loseCount: 0 },
+    { name: "x1", winCount: 0, loseCount: 0, drawCount: 0 },
+    { name: "x2", winCount: 0, loseCount: 0, drawCount: 0 },
   ],
   player1Index: 0,
   player2Index: 1,

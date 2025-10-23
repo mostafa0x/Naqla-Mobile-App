@@ -8,4 +8,5 @@ export interface player {
   name: string;
   winCount: number;
   loseCount: number;
+  drawCount: number;
 }

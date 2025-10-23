@@ -30,7 +30,7 @@ function NameInput({ closeModel }: { closeModel: () => void }) {
         <TextInput
           placeholderTextColor={Colors.placeholder}
           style={styles.input}
-          placeholder="الاسم"
+          placeholder="...name"
           value={nameTxt}
           onChangeText={setNameTxt}
           onSubmitEditing={() =>
