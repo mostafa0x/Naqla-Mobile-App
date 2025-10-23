@@ -1,12 +1,12 @@
 import { actionTypeStatusGame } from "@/types";
-import { GameSliceType } from "@/types/GameSliceType";
+import { GameSliceType, SideType } from "@/types/GameSliceType";
 import { createSlice } from "@reduxjs/toolkit";
 const initialState: GameSliceType = {
-  player1Time: 600,
-  player2Time: 600,
+  player1Time: 5,
+  player2Time: 5,
   player1Moves: 0,
   player2Moves: 0,
-  turn: 2,
+  turn: 1,
   statusGame: "waiting",
   mainTime: 1,
 };
@@ -15,11 +15,16 @@ const GameSlice = createSlice({
   initialState,
   reducers: {
     subTime: (state, aciton) => {
-      const side: 1 | 2 = aciton.payload;
+      if (state.statusGame !== "playing") return;
+      const side: SideType = aciton.payload;
       if (side === 1 && state.player1Time > 0) {
         state.player1Time -= 1;
       } else if (side === 2 && state.player2Time > 0) {
         state.player2Time -= 1;
+      } else if (side === 1 && state.player1Time <= 0) {
+        state.statusGame = "winP2";
+      } else if (side === 2 && state.player2Time <= 0) {
+        state.statusGame = "winP1";
       }
     },
     setStatusGame: (state, action: actionTypeStatusGame) => {
@@ -30,8 +35,17 @@ const GameSlice = createSlice({
       prevTurn == 1 ? (state.player1Moves += 1) : (state.player2Moves += 1);
       state.turn = prevTurn == 1 ? 2 : 1;
     },
+    restartGame: (state) => {
+      state.player1Time = 5;
+      state.player2Time = 5;
+      state.player1Moves = 0;
+      state.player2Moves = 0;
+      state.statusGame = "waiting";
+      state.turn = 1;
+    },
   },
 });
 
 export const GameReducer = GameSlice.reducer;
-export const { subTime, setStatusGame, setTurn } = GameSlice.actions;
+export const { subTime, setStatusGame, setTurn, restartGame } =
+  GameSlice.actions;

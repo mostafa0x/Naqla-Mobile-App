@@ -21,6 +21,7 @@ function SideSection({
     <>
       <NameSection label={player.name} side={side} />
       <TouchableOpacity
+        disabled={side !== turn}
         onPress={() => turn === side && handleClickSides(dispatch, statusGame)}
         style={[
           styles.container,

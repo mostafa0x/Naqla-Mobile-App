@@ -3,9 +3,11 @@ export interface GameSliceType {
   player2Time: number;
   player1Moves: number;
   player2Moves: number;
-  turn: 1 | 2;
+  turn: SideType;
   statusGame: statusGame;
   mainTime: number;
 }
 
-export type statusGame = "waiting" | "playing" | "pause";
+export type statusGame = "waiting" | "playing" | "pause" | "winP1" | "winP2";
+
+export type SideType = 1 | 2;

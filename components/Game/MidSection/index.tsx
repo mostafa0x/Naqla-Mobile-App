@@ -11,11 +11,20 @@ function MidSection({ statusGame }: { statusGame: statusGame }) {
   return (
     <View style={styles.container}>
       {statusGame === "playing" ? (
-        <TouchableOpacity onPress={() => dispatch(setStatusGame("pause"))}>
+        <TouchableOpacity
+          onPress={() =>
+            statusGame === "playing" && dispatch(setStatusGame("pause"))
+          }
+        >
           <Icon source={"pause"} size={rw(iconSize)} />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity onPress={() => dispatch(setStatusGame("playing"))}>
+        <TouchableOpacity
+          onPress={() =>
+            (statusGame === "pause" || statusGame === "waiting") &&
+            dispatch(setStatusGame("playing"))
+          }
+        >
           <Icon source={"play"} size={rw(iconSize)} />
         </TouchableOpacity>
       )}
