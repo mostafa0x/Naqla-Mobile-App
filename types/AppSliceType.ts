@@ -2,6 +2,7 @@ export interface AppSliceType {
   players: player[];
   player1Index: number;
   player2Index: number;
+  Leaderborad: player[];
 }
 
 export interface player {

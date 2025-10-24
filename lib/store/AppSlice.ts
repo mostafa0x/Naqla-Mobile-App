@@ -11,6 +11,7 @@ const initialState: AppSliceType = {
   ],
   player1Index: 0,
   player2Index: 1,
+  Leaderborad: [],
 };
 const AppSlice = createSlice({
   name: "AppSlice",
@@ -83,9 +84,17 @@ const AppSlice = createSlice({
       state.players[state.player1Index] = newP1;
       state.players[state.player2Index] = newP2;
     },
+    setLeaderboard: (state) => {
+      state.Leaderborad = state.players;
+    },
   },
 });
 
 export const AppReducer = AppSlice.reducer;
-export const { addPlayer, changePlayersIndex, gameOver, setDraw } =
-  AppSlice.actions;
+export const {
+  addPlayer,
+  changePlayersIndex,
+  gameOver,
+  setDraw,
+  setLeaderboard,
+} = AppSlice.actions;

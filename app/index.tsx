@@ -4,13 +4,15 @@ import AddPlayerModel from "@/components/Models/AddPlayerModel";
 import StartButton from "@/components/StartButton";
 import VS from "@/components/Vs";
 import { Colors, Fonts } from "@/constants/theme";
-import { useAppSelector } from "@/hooks/useStore";
+import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
+import { setLeaderboard } from "@/lib/store/AppSlice";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { useRouter } from "expo-router";
 import { useCallback, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const [modelAddPlayer, setModelAddPlayer] = useState(false);
   const { players } = useAppSelector((state) => state.AppReducer);
@@ -25,8 +27,13 @@ export default function HomeScreen() {
     console.log(players);
     console.log(players.length);
 
+    dispatch(setLeaderboard());
     return () => {};
   }, [players]);
+
+  useEffect(() => {
+    return () => {};
+  }, []);
 
   return (
     <>

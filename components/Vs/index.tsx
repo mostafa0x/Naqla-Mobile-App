@@ -14,9 +14,7 @@ export default function VS() {
     <View style={styles.container}>
       {players.length < 2 ? (
         <View style={styles.emptyMessContainer}>
-          <Text style={styles.emptyMess}>
-            عدد الاعبين غير كافي اقل من اتنين
-          </Text>
+          <Text style={styles.emptyMess}>Number of players less than two</Text>
         </View>
       ) : (
         <>
@@ -49,6 +47,6 @@ const styles = StyleSheet.create({
   emptyMess: {
     fontFamily: Fonts.TajawalBold,
     fontSize: rf(24),
-    color: Colors.primaryText,
+    color: Colors.placeholder,
   },
 });

@@ -1,4 +1,6 @@
 import { Colors, Fonts } from "@/constants/theme";
+import { useAppSelector } from "@/hooks/useStore";
+import { player } from "@/types/AppSliceType";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { FlashList } from "@shopify/flash-list";
 import React, { memo, useCallback } from "react";
@@ -7,9 +9,13 @@ import AddButton from "../AddButton";
 import Item from "./item";
 
 function LeaderBoard({ openModel }: { openModel: () => void }) {
-  const renderItem = useCallback(() => {
-    return <Item />;
-  }, []);
+  const { Leaderborad } = useAppSelector((state) => state.AppReducer);
+  const renderItem = useCallback(
+    ({ item, index }: { item: player; index: number }) => {
+      return <Item item={item} index={index + 1} />;
+    },
+    []
+  );
 
   const itemSeparator = useCallback(() => {
     return <View style={styles.spaceItem}></View>;
@@ -41,7 +47,7 @@ function LeaderBoard({ openModel }: { openModel: () => void }) {
         <FlashList
           showsVerticalScrollIndicator={false}
           numColumns={1}
-          data={[]}
+          data={Leaderborad}
           ListEmptyComponent={listEmpty}
           renderItem={renderItem}
           ItemSeparatorComponent={itemSeparator}
@@ -87,10 +93,10 @@ const styles = StyleSheet.create({
     height: rh(200),
   },
   contentContainer: {
-    paddingBottom: rh(50),
+    paddingBottom: rh(20),
   },
   spaceItem: {
-    height: rh(33),
+    height: rh(25),
   },
   emptylistContainer: {
     alignItems: "center",

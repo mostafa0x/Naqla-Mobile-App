@@ -1,27 +1,35 @@
 import { Colors, Fonts } from "@/constants/theme";
+import { player } from "@/types/AppSliceType";
 import { rf, rw } from "@/utils/dimensions";
 import React, { memo } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-function Item_LeaderBoard() {
+function Item_LeaderBoard({ item, index }: { item: player; index: number }) {
   return (
     <View style={styles.contntContainer}>
-      <View style={styles.rankContainer}>
+      <View
+        style={[
+          styles.rankContainer,
+          index === 1 && styles.rank1,
+          index === 2 && styles.rank2,
+          index === 3 && styles.rank3,
+        ]}
+      >
         <Text numberOfLines={1} adjustsFontSizeToFit style={styles.rankLabel}>
-          1
+          {index}
         </Text>
       </View>
       <Text numberOfLines={1} adjustsFontSizeToFit style={styles.nameLabel}>
-        Btata{" "}
+        {item.name}
       </Text>
       <Text numberOfLines={1} style={styles.contantLabel}>
-        0
+        {item.winCount}
       </Text>
       <Text numberOfLines={1} style={styles.contantLabel}>
-        0
+        {item.drawCount}
       </Text>
       <Text numberOfLines={1} style={styles.contantLabel}>
-        0
+        {item.loseCount}
       </Text>
       <Text numberOfLines={1} style={styles.pLabel}>
         0
@@ -48,7 +56,7 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.TajawalBold,
     fontSize: rf(20),
     color: Colors.placeholder,
-    width: rw(47),
+    width: rw(46),
     textAlign: "center",
   },
   pLabel: {
@@ -59,16 +67,25 @@ const styles = StyleSheet.create({
     textAlign: "right",
   },
   rankContainer: {
-    backgroundColor: Colors.loseCount,
+    backgroundColor: Colors.notMyTurnBg,
     borderTopStartRadius: rw(10),
     paddingLeft: rw(6),
     marginRight: rw(8),
   },
   rankLabel: {
-    fontFamily: Fonts.TajawalBold,
+    fontFamily: Fonts.TajawalMedium,
     fontSize: rf(20),
-    color: Colors.placeholder,
+    color: "#0d110dff",
     width: rw(12),
+  },
+  rank1: {
+    backgroundColor: "#FFAA04",
+  },
+  rank2: {
+    backgroundColor: "#9E9E9E",
+  },
+  rank3: {
+    backgroundColor: "#FF6E04",
   },
 });
 

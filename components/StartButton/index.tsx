@@ -7,11 +7,15 @@ import { StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 
 function StartButton({ router }: { router: Router }) {
-  const handlePress = useCallback(() => router.push("/GameScreen"), [router]);
+  const handlePress = useCallback(
+    () => active && router.push("/GameScreen"),
+    [router]
+  );
   const { players } = useAppSelector((state) => state.AppReducer);
   const active = players.length >= 2;
   return (
     <Button
+      disabled={!active}
       onPress={handlePress}
       labelStyle={styles.label}
       style={[styles.btn, active && styles.active]}
