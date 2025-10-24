@@ -34,7 +34,7 @@ function SideSection({
     >
       <View style={styles.NameContainer}>
         <Text numberOfLines={1} style={styles.nameLabel}>
-          {player.name}
+          {player?.name}
         </Text>
       </View>
       <View style={styles.movesContainer}>

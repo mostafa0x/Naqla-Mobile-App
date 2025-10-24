@@ -5,7 +5,7 @@ export interface GameSliceType {
   player2Moves: number;
   turn: SideType;
   statusGame: statusGame;
-  currTimeIndex: number;
+  currTimeId: number;
   times: TimeType[];
 }
 
@@ -14,6 +14,8 @@ export type statusGame = "waiting" | "playing" | "pause" | "winP1" | "winP2";
 export type SideType = 1 | 2;
 
 export type TimeType = {
+  id: number;
+
   name: string;
   secounds: number;
 };

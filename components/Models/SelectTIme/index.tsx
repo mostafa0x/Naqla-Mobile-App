@@ -2,6 +2,7 @@ import CustomTime from "@/components/CustomTime";
 import CloseIcon from "@/components/icons/CloseIcon";
 import TimeList from "@/components/TimeList";
 import { Colors, Fonts } from "@/constants/theme";
+import { useAppSelector } from "@/hooks/useStore";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { BlurView } from "expo-blur";
 import React, { memo } from "react";
@@ -14,6 +15,7 @@ function SelectTIme({
   isSelectTime: boolean;
   closeSelectTIme: () => void;
 }) {
+  const { times } = useAppSelector((state) => state.GameReducer);
   return (
     <Portal>
       {isSelectTime && (

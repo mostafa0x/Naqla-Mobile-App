@@ -5,7 +5,7 @@ import SelectWinner from "@/components/Models/SelectWinner";
 import WiningModel from "@/components/Models/WiningModel";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { gameOver } from "@/lib/store/AppSlice";
-import { subTime } from "@/lib/store/GameSlice";
+import { restartGame, subTime } from "@/lib/store/GameSlice";
 import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -73,7 +73,7 @@ export default function GameScreen() {
 
   useEffect(() => {
     return () => {
-      // dispatch(restartGame());
+      dispatch(restartGame());
     };
   }, []);
 

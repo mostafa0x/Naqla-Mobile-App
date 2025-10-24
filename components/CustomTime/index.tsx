@@ -1,6 +1,6 @@
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
-import { addTime } from "@/lib/store/GameSlice";
+import { addTime, setCurrTimeId } from "@/lib/store/GameSlice";
 import cheackDisabledSaveBtn from "@/service/cheackDisabledSaveBtn";
 import getTotalTime from "@/service/getTotalTime";
 import { setTimes } from "@/service/Storage";
@@ -37,7 +37,13 @@ function CustomTime() {
     }
   }, []);
   const handleAdd = useCallback(() => {
-    dispatch(addTime({ name: nameTime, secounds: getTotalTime(mTime, sTime) }));
+    dispatch(
+      addTime({
+        name: nameTime,
+        secounds: getTotalTime(mTime, sTime),
+        id: Date.now(),
+      })
+    );
     setMTime("");
     setSTime("");
     setNameTime("");
@@ -46,7 +52,7 @@ function CustomTime() {
 
   useEffect(() => {
     setTimes(times);
-
+    times.length > -0 && dispatch(setCurrTimeId(times[0].id));
     return () => {};
   }, [times]);
 

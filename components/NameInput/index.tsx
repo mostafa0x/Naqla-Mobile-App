@@ -1,7 +1,8 @@
 import { Colors } from "@/constants/theme";
-import { useAppDispatch } from "@/hooks/useStore";
+import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import handelAddPlayer from "@/service/handelAddPlayer";
 import handleCheckName from "@/service/handleCheckName";
+import { setPlayers } from "@/service/Storage";
 import { rf, rw } from "@/utils/dimensions";
 import React, { memo, useEffect, useRef, useState } from "react";
 import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
@@ -11,8 +12,13 @@ function NameInput({ closeModel }: { closeModel: () => void }) {
   const [activeIcon, setActiveIcon] = useState(false);
   const [nameTxt, setNameTxt] = useState("");
   const dispatch = useAppDispatch();
-  const [keyboardStatus, setKeyboardStatus] = useState("Keyboard Hidden");
   const inputRef = useRef<React.ComponentRef<typeof TextInput> | null>(null);
+  const { players } = useAppSelector((state) => state.AppReducer);
+
+  useEffect(() => {
+    setPlayers(players);
+    return () => {};
+  }, [players]);
 
   useEffect(() => {
     setActiveIcon(handleCheckName(nameTxt));

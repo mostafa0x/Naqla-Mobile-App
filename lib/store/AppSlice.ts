@@ -6,10 +6,7 @@ import { SideType } from "@/types/GameSliceType";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: AppSliceType = {
-  players: [
-    { name: "x1", winCount: 0, loseCount: 1, drawCount: 0 },
-    { name: "x2", winCount: 1, loseCount: 0, drawCount: 0 },
-  ],
+  players: [],
   player1Index: 0,
   player2Index: 1,
   Leaderborad: [],
@@ -88,6 +85,9 @@ const AppSlice = createSlice({
       const data = state.players;
       state.Leaderborad = sortLeaderboard(data);
     },
+    loadPlayers: (state, action) => {
+      state.players = action.payload;
+    },
   },
 });
 
@@ -98,4 +98,5 @@ export const {
   gameOver,
   setDraw,
   setLeaderboard,
+  loadPlayers,
 } = AppSlice.actions;

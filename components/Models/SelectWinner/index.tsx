@@ -34,7 +34,7 @@ function SelectWinner({
               <CustomButton
                 color={"#fff"}
                 colorTxt="#000"
-                label={players[player1Index].name}
+                label={players[player1Index]?.name}
                 type={3}
                 closeSelectModel={closeSelectModel}
               />
@@ -47,7 +47,7 @@ function SelectWinner({
               <CustomButton
                 color="#000"
                 colorTxt="#fff"
-                label={players[player2Index].name}
+                label={players[player2Index]?.name}
                 type={5}
                 closeSelectModel={closeSelectModel}
               />

@@ -8,18 +8,12 @@ import { StyleSheet, Text, View } from "react-native";
 import Item_TimeList from "./item";
 
 function TimeList() {
-  const { times, currTimeIndex } = useAppSelector((state) => state.GameReducer);
+  const { times, currTimeId } = useAppSelector((state) => state.GameReducer);
   const renderItem = useCallback(
-    ({ item, index }: { item: TimeType; index: number }) => {
-      return (
-        <Item_TimeList
-          item={item}
-          index={index}
-          currTimeIndex={currTimeIndex}
-        />
-      );
+    ({ item }: { item: TimeType }) => {
+      return <Item_TimeList item={item} currTimeId={currTimeId} />;
     },
-    [currTimeIndex]
+    [currTimeId]
   );
 
   const itemSeparator = useCallback(() => {

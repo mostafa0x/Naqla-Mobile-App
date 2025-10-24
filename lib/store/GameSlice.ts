@@ -1,3 +1,4 @@
+import getTime from "@/service/getTime";
 import { actionTypeStatusGame, AddTimeType } from "@/types";
 import { GameSliceType, SideType } from "@/types/GameSliceType";
 import { createSlice } from "@reduxjs/toolkit";
@@ -8,8 +9,12 @@ const initialState: GameSliceType = {
   player2Moves: 0,
   turn: 1,
   statusGame: "waiting",
-  currTimeIndex: 1,
-  times: [],
+  currTimeId: 1,
+  times: [
+    { name: "05m:00s", secounds: 300, id: 1 },
+    { name: "10m:00s", secounds: 600, id: 2 },
+    { name: "15m:00s", secounds: 900, id: 3 },
+  ],
 };
 const GameSlice = createSlice({
   name: "GameSlice",
@@ -37,23 +42,32 @@ const GameSlice = createSlice({
       state.turn = prevTurn == 1 ? 2 : 1;
     },
     restartGame: (state) => {
-      state.player1Time = state.times[state.currTimeIndex].secounds;
-      state.player2Time = state.times[state.currTimeIndex].secounds;
+      const lenTimes = state.times.length;
+      state.player1Time = getTime(state.times, state.currTimeId);
+      state.player2Time = getTime(state.times, state.currTimeId);
       state.player1Moves = 0;
       state.player2Moves = 0;
       state.statusGame = "waiting";
       state.turn = 1;
     },
-    setCurrTimeIndex: (state, action) => {
-      state.currTimeIndex = action.payload;
-      state.player1Time = state.times[action.payload].secounds;
-      state.player2Time = state.times[action.payload].secounds;
+    setCurrTimeId: (state, action) => {
+      state.currTimeId = action.payload;
+      state.player1Time = getTime(state.times, action.payload);
+      state.player2Time = getTime(state.times, action.payload);
+      console.log(action.payload);
     },
     addTime: (state, action: AddTimeType) => {
       state.times.push(action.payload);
     },
+    deleteTime: (state, action) => {
+      const timeId: number = action.payload;
+      const newtimes = state.times.filter((time) => time.id !== timeId);
+      state.times = newtimes;
+      console.log(timeId);
+    },
     loadTime: (state, action) => {
       state.times = action.payload;
+      state.currTimeId = action.payload.length > 0 ? action.payload[0].it : 0;
     },
   },
 });
@@ -64,7 +78,8 @@ export const {
   setStatusGame,
   setTurn,
   restartGame,
-  setCurrTimeIndex,
+  setCurrTimeId,
   addTime,
   loadTime,
+  deleteTime,
 } = GameSlice.actions;
