@@ -33,6 +33,8 @@ function CustomButton({
       closeSelectModel && closeSelectModel();
     } else if (type === 4) {
       dispatch(setDraw());
+      dispatch(restartGame());
+
       closeSelectModel && closeSelectModel();
     } else if (type === 5) {
       dispatch(setStatusGame("winP2"));

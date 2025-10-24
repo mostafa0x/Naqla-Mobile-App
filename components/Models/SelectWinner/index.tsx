@@ -7,7 +7,6 @@ import { BlurView } from "expo-blur";
 import React, { memo } from "react";
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Portal } from "react-native-paper";
-
 function SelectWinner({
   isSelectWin,
   closeSelectModel,
@@ -95,7 +94,7 @@ const styles = StyleSheet.create({
   test: { backgroundColor: "rgba(255,255,255,0.2)" },
   mainLabel: {
     fontFamily: Fonts.TajawalBlack,
-    fontSize: rf(32),
+    fontSize: rw(22),
     color: Colors.primaryText,
   },
   secLabel: {

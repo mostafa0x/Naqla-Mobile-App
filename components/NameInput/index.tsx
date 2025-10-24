@@ -3,7 +3,7 @@ import { useAppDispatch } from "@/hooks/useStore";
 import handelAddPlayer from "@/service/handelAddPlayer";
 import handleCheckName from "@/service/handleCheckName";
 import { rf, rw } from "@/utils/dimensions";
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import PlusIcon from "../icons/PlusIcon";
 
@@ -11,11 +11,22 @@ function NameInput({ closeModel }: { closeModel: () => void }) {
   const [activeIcon, setActiveIcon] = useState(false);
   const [nameTxt, setNameTxt] = useState("");
   const dispatch = useAppDispatch();
+  const [keyboardStatus, setKeyboardStatus] = useState("Keyboard Hidden");
+  const inputRef = useRef<React.ComponentRef<typeof TextInput> | null>(null);
 
   useEffect(() => {
     setActiveIcon(handleCheckName(nameTxt));
     return () => {};
   }, [nameTxt]);
+
+  useEffect(() => {
+    let time = setTimeout(() => {
+      inputRef.current?.focus();
+    }, 200);
+    return () => {
+      clearTimeout(time);
+    };
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -28,6 +39,7 @@ function NameInput({ closeModel }: { closeModel: () => void }) {
           <PlusIcon active={activeIcon} />
         </TouchableOpacity>
         <TextInput
+          ref={inputRef}
           placeholderTextColor={Colors.placeholder}
           style={styles.input}
           placeholder="...name"

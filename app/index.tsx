@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { setLeaderboard } from "@/lib/store/AppSlice";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { useCallback, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
@@ -58,6 +59,7 @@ export default function HomeScreen() {
         </View>
       </View>
       <AddPlayerModel modelAddPlayer={modelAddPlayer} closeModel={closeModel} />
+      <StatusBar style="light" backgroundColor="black" hidden={true} />
     </>
   );
 }

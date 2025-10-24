@@ -23,7 +23,11 @@ function MidSection({
             statusGame === "playing" && dispatch(setStatusGame("pause"))
           }
         >
-          <Icon source={"pause"} size={rw(iconSize)} />
+          <Icon
+            source={"pause"}
+            color={Colors.primaryText}
+            size={rw(iconSize)}
+          />
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
@@ -32,7 +36,11 @@ function MidSection({
             dispatch(setStatusGame("playing"))
           }
         >
-          <Icon source={"play"} size={rw(iconSize)} />
+          <Icon
+            source={"play"}
+            color={Colors.primaryText}
+            size={rw(iconSize)}
+          />
         </TouchableOpacity>
       )}
       <TouchableOpacity
@@ -41,12 +49,24 @@ function MidSection({
           openSelectModel();
         }}
       >
-        <Icon source={"progress-check"} size={rw(iconSize)} />
+        <Icon
+          source={"progress-check"}
+          color={Colors.primaryText}
+          size={rw(iconSize)}
+        />
       </TouchableOpacity>
-      <Icon source={"timer-cog-outline"} size={rw(iconSize)} />
+      <Icon
+        source={"timer-cog-outline"}
+        color={Colors.primaryText}
+        size={rw(iconSize)}
+      />
 
       <TouchableOpacity onPress={() => dispatch(restartGame())}>
-        <Icon source={"restore"} size={rw(iconSize)} />
+        <Icon
+          source={"restore"}
+          color={Colors.primaryText}
+          size={rw(iconSize)}
+        />
       </TouchableOpacity>
     </View>
   );
