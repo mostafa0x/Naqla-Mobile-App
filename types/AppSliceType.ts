@@ -10,4 +10,5 @@ export interface player {
   winCount: number;
   loseCount: number;
   drawCount: number;
+  points?: number;
 }

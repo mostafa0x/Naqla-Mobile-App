@@ -32,7 +32,7 @@ function Item_LeaderBoard({ item, index }: { item: player; index: number }) {
         {item.loseCount}
       </Text>
       <Text numberOfLines={1} style={styles.pLabel}>
-        0
+        {item.points}
       </Text>
     </View>
   );
