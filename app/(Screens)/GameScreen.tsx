@@ -26,7 +26,7 @@ export default function GameScreen() {
   } = useAppSelector((state) => state.GameReducer);
 
   const [isSelectWin, setSelectWin] = useState(false);
-  const [isSelectTime, setIsSelectTime] = useState(true);
+  const [isSelectTime, setIsSelectTime] = useState(false);
 
   const closeSelectModel = useCallback(() => {
     setSelectWin(false);
@@ -63,13 +63,6 @@ export default function GameScreen() {
     }
     return () => {};
   }, [statusGame]);
-
-  useEffect(() => {
-    // setTimes(times);
-    // console.log(times);
-
-    return () => {};
-  }, [times]);
 
   useEffect(() => {
     return () => {

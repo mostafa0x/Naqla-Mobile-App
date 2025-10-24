@@ -1,6 +1,6 @@
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
-import { addTime, setCurrTimeId } from "@/lib/store/GameSlice";
+import { addTime } from "@/lib/store/GameSlice";
 import cheackDisabledSaveBtn from "@/service/cheackDisabledSaveBtn";
 import getTotalTime from "@/service/getTotalTime";
 import { setTimes } from "@/service/Storage";
@@ -52,7 +52,6 @@ function CustomTime() {
 
   useEffect(() => {
     setTimes(times);
-    times.length > -0 && dispatch(setCurrTimeId(times[0].id));
     return () => {};
   }, [times]);
 

@@ -54,7 +54,6 @@ const GameSlice = createSlice({
       state.currTimeId = action.payload;
       state.player1Time = getTime(state.times, action.payload);
       state.player2Time = getTime(state.times, action.payload);
-      console.log(action.payload);
     },
     addTime: (state, action: AddTimeType) => {
       state.times.push(action.payload);
@@ -63,7 +62,6 @@ const GameSlice = createSlice({
       const timeId: number = action.payload;
       const newtimes = state.times.filter((time) => time.id !== timeId);
       state.times = newtimes;
-      console.log(timeId);
     },
     loadTime: (state, action) => {
       state.times = action.payload;

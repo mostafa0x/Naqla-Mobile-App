@@ -32,7 +32,7 @@ function TimeList() {
       <FlashList
         data={times}
         renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(item) => item.id.toString()}
         ItemSeparatorComponent={itemSeparator}
         contentContainerStyle={styles.contentContainer}
         ListEmptyComponent={listEmpty}

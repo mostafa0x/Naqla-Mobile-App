@@ -19,7 +19,7 @@ function Item_TimeList({
   const handlePress = useCallback(() => {
     disptach(restartGame());
     disptach(setCurrTimeId(item.id));
-  }, [item]);
+  }, []);
 
   const handleDelete = useCallback(() => {
     disptach(deleteTime(item.id));
