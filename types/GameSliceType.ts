@@ -6,8 +6,14 @@ export interface GameSliceType {
   turn: SideType;
   statusGame: statusGame;
   mainTime: number;
+  times: TimeType[];
 }
 
 export type statusGame = "waiting" | "playing" | "pause" | "winP1" | "winP2";
 
 export type SideType = 1 | 2;
+
+export type TimeType = {
+  name: string;
+  secounds: number;
+};

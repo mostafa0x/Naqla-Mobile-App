@@ -24,7 +24,10 @@ function SideSection({
         styles.container,
         side === 2 && styles.containerRotate,
         turn === side &&
-          (statusGame === "pause" || statusGame === "waiting"
+          (statusGame === "pause" ||
+          statusGame === "waiting" ||
+          statusGame === "winP1" ||
+          statusGame === "winP2"
             ? styles.myTurnPause
             : styles.myTurn),
       ]}

@@ -54,17 +54,19 @@ const styles = StyleSheet.create({
 
   contantLabel: {
     fontFamily: Fonts.TajawalBold,
-    fontSize: rf(20),
+    fontSize: rf(16),
     color: Colors.placeholder,
     width: rw(46),
     textAlign: "center",
+    textAlignVertical: "center",
   },
   pLabel: {
     fontFamily: Fonts.TajawalBold,
     fontSize: rf(20),
     color: Colors.placeholder,
-    width: rw(47),
-    textAlign: "right",
+    width: rw(70),
+    textAlign: "center",
+    textAlignVertical: "center",
   },
   rankContainer: {
     backgroundColor: Colors.notMyTurnBg,

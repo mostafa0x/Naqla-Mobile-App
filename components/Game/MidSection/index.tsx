@@ -9,11 +9,14 @@ import { Icon } from "react-native-paper";
 function MidSection({
   statusGame,
   openSelectModel,
+  openSelectTIme,
 }: {
   statusGame: statusGame;
   openSelectModel: () => void;
+  openSelectTIme: () => void;
 }) {
-  const iconSize = 42;
+  const iconSize = 32;
+  const iconColor = Colors.secondaryText;
   const dispatch = useAppDispatch();
   return (
     <View style={styles.container}>
@@ -23,11 +26,7 @@ function MidSection({
             statusGame === "playing" && dispatch(setStatusGame("pause"))
           }
         >
-          <Icon
-            source={"pause"}
-            color={Colors.primaryText}
-            size={rw(iconSize)}
-          />
+          <Icon source={"pause"} color={iconColor} size={rw(iconSize)} />
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
@@ -36,11 +35,7 @@ function MidSection({
             dispatch(setStatusGame("playing"))
           }
         >
-          <Icon
-            source={"play"}
-            color={Colors.primaryText}
-            size={rw(iconSize)}
-          />
+          <Icon source={"play"} color={iconColor} size={rw(iconSize)} />
         </TouchableOpacity>
       )}
       <TouchableOpacity
@@ -49,24 +44,18 @@ function MidSection({
           openSelectModel();
         }}
       >
+        <Icon source={"progress-check"} color={iconColor} size={rw(iconSize)} />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={openSelectTIme}>
         <Icon
-          source={"progress-check"}
-          color={Colors.primaryText}
+          source={"timer-cog-outline"}
+          color={iconColor}
           size={rw(iconSize)}
         />
       </TouchableOpacity>
-      <Icon
-        source={"timer-cog-outline"}
-        color={Colors.primaryText}
-        size={rw(iconSize)}
-      />
 
       <TouchableOpacity onPress={() => dispatch(restartGame())}>
-        <Icon
-          source={"restore"}
-          color={Colors.primaryText}
-          size={rw(iconSize)}
-        />
+        <Icon source={"restore"} color={iconColor} size={rw(iconSize)} />
       </TouchableOpacity>
     </View>
   );

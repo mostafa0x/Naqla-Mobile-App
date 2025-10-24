@@ -42,7 +42,7 @@ function NameInput({ closeModel }: { closeModel: () => void }) {
           ref={inputRef}
           placeholderTextColor={Colors.placeholder}
           style={styles.input}
-          placeholder="...name"
+          placeholder="name..."
           value={nameTxt}
           onChangeText={setNameTxt}
           onSubmitEditing={() =>

@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  test: { backgroundColor: "rgba(255,255,255,0.2)" },
   mainLabel: {
     fontFamily: Fonts.TajawalBlack,
     fontSize: rw(22),

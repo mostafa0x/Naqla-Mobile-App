@@ -1,5 +1,6 @@
 import MidSection from "@/components/Game/MidSection";
 import SideSection from "@/components/Game/SideSection";
+import SelectTIme from "@/components/Models/SelectTIme";
 import SelectWinner from "@/components/Models/SelectWinner";
 import WiningModel from "@/components/Models/WiningModel";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
@@ -24,12 +25,20 @@ export default function GameScreen() {
   } = useAppSelector((state) => state.GameReducer);
 
   const [isSelectWin, setSelectWin] = useState(false);
+  const [isSelectTime, setIsSelectTime] = useState(true);
 
   const closeSelectModel = useCallback(() => {
     setSelectWin(false);
   }, []);
   const openSelectModel = useCallback(() => {
     setSelectWin(true);
+  }, []);
+
+  const closeSelectTIme = useCallback(() => {
+    setIsSelectTime(false);
+  }, []);
+  const openSelectTIme = useCallback(() => {
+    setIsSelectTime(true);
   }, []);
 
   useEffect(() => {
@@ -72,7 +81,11 @@ export default function GameScreen() {
           statusGame={statusGame}
           moves={player2Moves}
         />
-        <MidSection statusGame={statusGame} openSelectModel={openSelectModel} />
+        <MidSection
+          statusGame={statusGame}
+          openSelectModel={openSelectModel}
+          openSelectTIme={openSelectTIme}
+        />
         <SideSection
           side={1}
           player={players[player1Index]}
@@ -90,6 +103,10 @@ export default function GameScreen() {
       <SelectWinner
         isSelectWin={isSelectWin}
         closeSelectModel={closeSelectModel}
+      />
+      <SelectTIme
+        isSelectTime={isSelectTime}
+        closeSelectTIme={closeSelectTIme}
       />
     </>
   );

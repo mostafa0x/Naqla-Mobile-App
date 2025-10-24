@@ -3,13 +3,13 @@ import AllProvidersContext from "@/context/AllProvidersContext";
 import { store } from "@/lib/store";
 import { useFonts } from "expo-font";
 import * as NavigationBar from "expo-navigation-bar";
-import { Stack } from "expo-router";
+import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { Provider } from "react-native-paper";
 import "react-native-reanimated";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Provider as ReduxProvider } from "react-redux";
-
+SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [isLoadFonts] = useFonts({
     TajawalBlack: require("@/assets/fonts/Tajawal-Black.ttf"),
@@ -17,10 +17,6 @@ export default function RootLayout() {
     TajawalMedium: require("@/assets/fonts/Tajawal-Medium.ttf"),
     TajawalLight: require("@/assets/fonts/Tajawal-Light.ttf"),
   });
-
-  if (!isLoadFonts) {
-    return null;
-  }
 
   useEffect(() => {
     const hiddenNavigationBar = async () => {
@@ -30,6 +26,9 @@ export default function RootLayout() {
     return () => {};
   }, []);
 
+  if (!isLoadFonts) {
+    return SplashScreen.hide();
+  }
   return (
     <ReduxProvider store={store}>
       <AllProvidersContext>

@@ -18,12 +18,21 @@ function AddPlayerModel({ modelAddPlayer, closeModel }: AddPlayerModelType) {
           tint="systemChromeMaterialDark"
         />
       )}
-      <Modal animationType="slide" transparent visible={modelAddPlayer}>
+      <Modal
+        animationType="slide"
+        transparent
+        visible={modelAddPlayer}
+        onRequestClose={closeModel}
+      >
         <View style={styles.contant}>
           <View style={styles.box}>
             <TouchableOpacity style={styles.closeBtn}>
               <TouchableOpacity onPress={closeModel}>
-                <CloseIcon color={Colors.placeholder} />
+                <CloseIcon
+                  width={rw(34)}
+                  height={rh(34)}
+                  color={Colors.placeholder}
+                />
               </TouchableOpacity>
             </TouchableOpacity>
             <NameInput closeModel={closeModel} />
@@ -42,7 +51,7 @@ const styles = StyleSheet.create({
   },
   box: {
     width: rw(346),
-    height: rh(107),
+    height: rh(120),
     borderRadius: rw(20),
     backgroundColor: Colors.bannaer2,
     paddingLeft: rw(9),
@@ -50,14 +59,13 @@ const styles = StyleSheet.create({
   },
   closeBtn: {
     alignSelf: "flex-end",
-    paddingTop: rh(5),
+    paddingTop: rh(10),
   },
   blur: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
-  test: { backgroundColor: "rgba(255,255,255,0.2)" },
 });
 
 export default memo(AddPlayerModel);

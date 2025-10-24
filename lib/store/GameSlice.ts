@@ -9,6 +9,7 @@ const initialState: GameSliceType = {
   turn: 1,
   statusGame: "waiting",
   mainTime: 1,
+  times: [],
 };
 const GameSlice = createSlice({
   name: "GameSlice",
