@@ -5,7 +5,7 @@ export interface GameSliceType {
   player2Moves: number;
   turn: SideType;
   statusGame: statusGame;
-  mainTime: number;
+  currTimeIndex: number;
   times: TimeType[];
 }
 

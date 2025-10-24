@@ -1,5 +1,5 @@
 import { player } from "./AppSliceType";
-import { statusGame } from "./GameSliceType";
+import { statusGame, TimeType } from "./GameSliceType";
 
 export interface actionAddPlayer {
   type: string;
@@ -9,4 +9,9 @@ export interface actionAddPlayer {
 export interface actionTypeStatusGame {
   type: string;
   payload: statusGame;
+}
+
+export interface AddTimeType {
+  type: string;
+  payload: TimeType;
 }

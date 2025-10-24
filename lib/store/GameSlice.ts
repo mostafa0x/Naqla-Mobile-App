@@ -1,4 +1,4 @@
-import { actionTypeStatusGame } from "@/types";
+import { actionTypeStatusGame, AddTimeType } from "@/types";
 import { GameSliceType, SideType } from "@/types/GameSliceType";
 import { createSlice } from "@reduxjs/toolkit";
 const initialState: GameSliceType = {
@@ -8,7 +8,7 @@ const initialState: GameSliceType = {
   player2Moves: 0,
   turn: 1,
   statusGame: "waiting",
-  mainTime: 1,
+  currTimeIndex: 1,
   times: [],
 };
 const GameSlice = createSlice({
@@ -37,16 +37,34 @@ const GameSlice = createSlice({
       state.turn = prevTurn == 1 ? 2 : 1;
     },
     restartGame: (state) => {
-      state.player1Time = 5;
-      state.player2Time = 5;
+      state.player1Time = state.times[state.currTimeIndex].secounds;
+      state.player2Time = state.times[state.currTimeIndex].secounds;
       state.player1Moves = 0;
       state.player2Moves = 0;
       state.statusGame = "waiting";
       state.turn = 1;
     },
+    setCurrTimeIndex: (state, action) => {
+      state.currTimeIndex = action.payload;
+      state.player1Time = state.times[action.payload].secounds;
+      state.player2Time = state.times[action.payload].secounds;
+    },
+    addTime: (state, action: AddTimeType) => {
+      state.times.push(action.payload);
+    },
+    loadTime: (state, action) => {
+      state.times = action.payload;
+    },
   },
 });
 
 export const GameReducer = GameSlice.reducer;
-export const { subTime, setStatusGame, setTurn, restartGame } =
-  GameSlice.actions;
+export const {
+  subTime,
+  setStatusGame,
+  setTurn,
+  restartGame,
+  setCurrTimeIndex,
+  addTime,
+  loadTime,
+} = GameSlice.actions;

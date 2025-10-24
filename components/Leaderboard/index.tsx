@@ -52,6 +52,7 @@ function LeaderBoard({ openModel }: { openModel: () => void }) {
           renderItem={renderItem}
           ItemSeparatorComponent={itemSeparator}
           contentContainerStyle={styles.contentContainer}
+          keyExtractor={(item, index) => index.toString()}
         />
       </View>
     </View>

@@ -1,7 +1,7 @@
 import CustomTime from "@/components/CustomTime";
 import CloseIcon from "@/components/icons/CloseIcon";
+import TimeList from "@/components/TimeList";
 import { Colors, Fonts } from "@/constants/theme";
-import { useAppSelector } from "@/hooks/useStore";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { BlurView } from "expo-blur";
 import React, { memo } from "react";
@@ -14,9 +14,6 @@ function SelectTIme({
   isSelectTime: boolean;
   closeSelectTIme: () => void;
 }) {
-  const { players, player1Index, player2Index } = useAppSelector(
-    (state) => state.AppReducer
-  );
   return (
     <Portal>
       {isSelectTime && (
@@ -40,6 +37,9 @@ function SelectTIme({
               <View></View>
             </View>
             <CustomTime />
+            <View style={styles.list}>
+              <TimeList />
+            </View>
           </View>
         </View>
       </Modal>
@@ -78,6 +78,9 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.TajawalBlack,
     fontSize: rf(22),
     color: Colors.primaryText,
+  },
+  list: {
+    marginTop: rh(35),
   },
 });
 

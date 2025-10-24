@@ -37,7 +37,6 @@ const AppSlice = createSlice({
           state.player2Index
         );
       }
-      // if (state.player1Index === state.player2Index) console.log("error");
     },
     gameOver: (state, aciton) => {
       const Winnger: SideType = aciton.payload;

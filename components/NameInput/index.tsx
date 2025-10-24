@@ -39,6 +39,7 @@ function NameInput({ closeModel }: { closeModel: () => void }) {
           <PlusIcon active={activeIcon} />
         </TouchableOpacity>
         <TextInput
+          maxLength={7}
           ref={inputRef}
           placeholderTextColor={Colors.placeholder}
           style={styles.input}

@@ -5,7 +5,7 @@ import SelectWinner from "@/components/Models/SelectWinner";
 import WiningModel from "@/components/Models/WiningModel";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { gameOver } from "@/lib/store/AppSlice";
-import { restartGame, subTime } from "@/lib/store/GameSlice";
+import { subTime } from "@/lib/store/GameSlice";
 import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -22,6 +22,7 @@ export default function GameScreen() {
     turn,
     player1Moves,
     player2Moves,
+    times,
   } = useAppSelector((state) => state.GameReducer);
 
   const [isSelectWin, setSelectWin] = useState(false);
@@ -48,7 +49,6 @@ export default function GameScreen() {
         dispatch(subTime(turn));
       }, 1000);
     }
-    console.log(statusGame);
 
     return () => {
       clearInterval(time);
@@ -65,8 +65,15 @@ export default function GameScreen() {
   }, [statusGame]);
 
   useEffect(() => {
+    // setTimes(times);
+    // console.log(times);
+
+    return () => {};
+  }, [times]);
+
+  useEffect(() => {
     return () => {
-      dispatch(restartGame());
+      // dispatch(restartGame());
     };
   }, []);
 

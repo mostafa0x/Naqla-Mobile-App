@@ -27,7 +27,7 @@ export default function RootLayout() {
   }, []);
 
   if (!isLoadFonts) {
-    return SplashScreen.hide();
+    return null;
   }
   return (
     <ReduxProvider store={store}>

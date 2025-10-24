@@ -6,6 +6,7 @@ import VS from "@/components/Vs";
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { setLeaderboard } from "@/lib/store/AppSlice";
+import { clearData } from "@/service/Storage";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -25,14 +26,15 @@ export default function HomeScreen() {
   }, []);
 
   useEffect(() => {
-    console.log(players);
-    console.log(players.length);
-
     dispatch(setLeaderboard());
     return () => {};
   }, [players]);
 
   useEffect(() => {
+    const x = async () => {
+      clearData();
+    };
+    // x();
     return () => {};
   }, []);
 

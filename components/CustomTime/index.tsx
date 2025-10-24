@@ -1,27 +1,63 @@
 import { Colors, Fonts } from "@/constants/theme";
+import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
+import { addTime } from "@/lib/store/GameSlice";
+import cheackDisabledSaveBtn from "@/service/cheackDisabledSaveBtn";
+import getTotalTime from "@/service/getTotalTime";
+import { setTimes } from "@/service/Storage";
 import { rf, rh, rw } from "@/utils/dimensions";
-import React, { useCallback, useEffect, useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import React, { memo, useCallback, useEffect, useState } from "react";
+import { Keyboard, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button } from "react-native-paper";
 
-export default function CustomTime() {
+function CustomTime() {
+  const dispatch = useAppDispatch();
+  const { times } = useAppSelector((state) => state.GameReducer);
   const [mTime, setMTime] = useState("");
   const [sTime, setSTime] = useState("");
   const [nameTime, setNameTime] = useState("");
-
+  const [isDis, setIsDis] = useState(false);
   const handleAutoNameTime = useCallback((m: string, s: string) => {
     const min = m.length <= 0 ? "0" : m;
     const sec = s.length <= 0 ? "0" : s;
 
-    setNameTime(`${min}m : ${sec}s`);
+    setNameTime(`${min.padStart(2, "0")}m : ${sec.padStart(2, "0")}s`);
   }, []);
+
+  const handleChange = useCallback((text: string, type: 1 | 2) => {
+    const onlyNumbers = text.replace(/[^0-9]/g, "");
+
+    const num = parseInt(onlyNumbers, 10);
+
+    if (isNaN(num)) {
+      type === 1 ? setMTime("") : setSTime("");
+    } else if (num > 59) {
+      type === 1 ? setMTime("59") : setSTime("59");
+    } else {
+      type === 1 ? setMTime(onlyNumbers) : setSTime(onlyNumbers);
+    }
+  }, []);
+  const handleAdd = useCallback(() => {
+    dispatch(addTime({ name: nameTime, secounds: getTotalTime(mTime, sTime) }));
+    setMTime("");
+    setSTime("");
+    setNameTime("");
+    Keyboard.dismiss();
+  }, [nameTime, mTime, sTime]);
+
+  useEffect(() => {
+    setTimes(times);
+
+    return () => {};
+  }, [times]);
 
   useEffect(() => {
     handleAutoNameTime(mTime, sTime);
+    setIsDis(cheackDisabledSaveBtn(mTime, sTime));
     return () => {};
   }, [mTime, sTime]);
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.allBoxs}>
         <TextInput
           maxLength={50}
@@ -36,15 +72,16 @@ export default function CustomTime() {
           <TextInput
             keyboardType="numeric"
             maxLength={2}
-            placeholder={"00"}
+            placeholder="00"
             style={styles.input}
             placeholderTextColor={styles.input.color}
             textAlign="center"
             textAlignVertical="center"
             contextMenuHidden
             value={mTime}
-            onChangeText={setMTime}
+            onChangeText={(text) => handleChange(text, 1)}
           />
+
           <Text style={styles.spector}>:</Text>
           <TextInput
             keyboardType="numeric"
@@ -56,16 +93,26 @@ export default function CustomTime() {
             textAlignVertical="center"
             contextMenuHidden
             value={sTime}
-            onChangeText={setSTime}
+            onChangeText={(text) => handleChange(text, 2)}
           />
         </View>
       </View>
+      <Button
+        onPress={handleAdd}
+        disabled={isDis}
+        labelStyle={styles.labelBtn}
+        style={[styles.btn, !isDis && nameTime.length > 0 && styles.active]}
+      >
+        Save
+      </Button>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    gap: rh(25),
+  },
   allBoxs: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -100,4 +147,19 @@ const styles = StyleSheet.create({
     fontSize: rf(28),
     color: Colors.primaryText,
   },
+  btn: {
+    backgroundColor: Colors.placeholder,
+    width: rw(100),
+    alignSelf: "center",
+  },
+  active: {
+    backgroundColor: Colors.startBtn,
+  },
+  labelBtn: {
+    fontFamily: Fonts.TajawalBold,
+    fontSize: rf(18),
+    color: Colors.primaryText,
+  },
 });
+
+export default memo(CustomTime);
