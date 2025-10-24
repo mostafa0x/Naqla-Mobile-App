@@ -6,6 +6,7 @@ import WiningModel from "@/components/Models/WiningModel";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { gameOver } from "@/lib/store/AppSlice";
 import { restartGame, subTime } from "@/lib/store/GameSlice";
+import { setPlayers } from "@/service/Storage";
 import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -63,6 +64,12 @@ export default function GameScreen() {
     }
     return () => {};
   }, [statusGame]);
+
+  useEffect(() => {
+    return () => {
+      setPlayers(players);
+    };
+  }, [players]);
 
   useEffect(() => {
     return () => {

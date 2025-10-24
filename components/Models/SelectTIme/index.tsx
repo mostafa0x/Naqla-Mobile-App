@@ -25,7 +25,12 @@ function SelectTIme({
           tint="systemChromeMaterialDark"
         />
       )}
-      <Modal animationType="slide" transparent visible={isSelectTime}>
+      <Modal
+        animationType="slide"
+        transparent
+        visible={isSelectTime}
+        onRequestClose={closeSelectTIme}
+      >
         <View style={styles.contant}>
           <View style={styles.box}>
             <View style={styles.appbarContainer}>
@@ -36,7 +41,6 @@ function SelectTIme({
               >
                 <CloseIcon width={rw(32)} height={rh(32)} color={"#fff"} />
               </TouchableOpacity>
-              <View></View>
             </View>
             <CustomTime />
             <View style={styles.list}>
@@ -57,6 +61,7 @@ const styles = StyleSheet.create({
   },
   appbarContainer: {
     flexDirection: "row",
+    alignItems: "center",
     justifyContent: "space-between",
   },
   box: {

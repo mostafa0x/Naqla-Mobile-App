@@ -65,7 +65,9 @@ const GameSlice = createSlice({
     },
     loadTime: (state, action) => {
       state.times = action.payload;
-      state.currTimeId = action.payload.length > 0 ? action.payload[0].it : 0;
+      state.currTimeId = action.payload.length > 0 ? action.payload[0].id : 0;
+      state.player1Time = getTime(state.times, state.currTimeId);
+      state.player2Time = getTime(state.times, state.currTimeId);
     },
   },
 });

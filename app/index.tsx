@@ -31,10 +31,10 @@ export default function HomeScreen() {
   }, [players]);
 
   useEffect(() => {
-    const x = async () => {
+    const clear = async () => {
       clearData();
     };
-    // x();
+    // clear();
     return () => {};
   }, []);
 
