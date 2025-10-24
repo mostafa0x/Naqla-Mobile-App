@@ -2,6 +2,7 @@ import { useAppDispatch } from "@/hooks/useStore";
 import { getData } from "@/service/Storage";
 import { SplashScreen } from "expo-router";
 import React, { useEffect, useState } from "react";
+import AuidoPlayerProvider from "./AuidoPlayerProvider";
 
 export default function AllProvidersContext({
   children,
@@ -30,5 +31,5 @@ export default function AllProvidersContext({
   if (isLoadingGame) {
     SplashScreen.hide();
   }
-  return children;
+  return <AuidoPlayerProvider>{children}</AuidoPlayerProvider>;
 }

@@ -1,4 +1,5 @@
 import { Colors, Fonts } from "@/constants/theme";
+import { useAudioContext } from "@/context/AuidoPlayerProvider";
 import { useAppDispatch } from "@/hooks/useStore";
 import { formatTime } from "@/service/formatTime";
 import handleClickSides from "@/service/handleClickSides";
@@ -15,11 +16,19 @@ function SideSection({
   statusGame = "waiting",
   moves = 0,
 }: SideSectionType) {
+  const { playAudio } = useAudioContext();
   const dispatch = useAppDispatch();
+
   return (
     <TouchableOpacity
       disabled={side !== turn}
-      onPress={() => turn === side && handleClickSides(dispatch, statusGame)}
+      onPress={() => {
+        if (turn === side) {
+          playAudio("click");
+
+          handleClickSides(dispatch, statusGame);
+        }
+      }}
       style={[
         styles.container,
         side === 2 && styles.containerRotate,

@@ -1,3 +1,4 @@
+import { sounds } from "@/utils/Sounds";
 import { player } from "./AppSliceType";
 import { statusGame, TimeType } from "./GameSliceType";
 
@@ -15,3 +16,5 @@ export interface AddTimeType {
   type: string;
   payload: TimeType;
 }
+
+export type pathSounds = keyof typeof sounds;

@@ -1,4 +1,5 @@
 import { Colors, Fonts } from "@/constants/theme";
+import { useAudioContext } from "@/context/AuidoPlayerProvider";
 import { useAppSelector } from "@/hooks/useStore";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { Router } from "expo-router";
@@ -7,12 +8,14 @@ import { StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 
 function StartButton({ router }: { router: Router }) {
+  const { playAudio } = useAudioContext();
+
   const { players } = useAppSelector((state) => state.AppReducer);
   const active = players.length >= 2;
-  const handlePress = useCallback(
-    () => active && router.push("/GameScreen"),
-    [router, active]
-  );
+  const handlePress = useCallback(() => {
+    playAudio("yallaBena");
+    active && router.push("/GameScreen");
+  }, [router, active]);
   return (
     <Button
       disabled={!active}

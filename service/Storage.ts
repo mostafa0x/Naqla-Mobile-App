@@ -19,6 +19,7 @@ export async function setPlayers(players: player[]) {
     console.log("xxx");
   } catch (err: any) {
     console.error(err);
+
     throw err;
   }
 }
@@ -27,15 +28,22 @@ export async function getData(dispatch: any) {
   try {
     const store = await AsyncStorage.multiGet(["players", "times"]);
     const [playersRaw, timesRaw] = store.map((item) => item[1]);
+
     const players = JSON.parse(playersRaw ?? "[]");
-    const time = JSON.parse(
-      timesRaw ??
-        ' [{ name: "05m:00s", secounds: 300, id: 1 },{ name: "10m:00s", secounds: 600, id: 2 },{ name: "15m:00s", secounds: 900, id: 3 },]'
-    );
+
+    const defaultTimes = JSON.stringify([
+      { name: "05m:00s", secounds: 300, id: 1 },
+      { name: "10m:00s", secounds: 600, id: 2 },
+      { name: "15m:00s", secounds: 900, id: 3 },
+    ]);
+
+    const time = JSON.parse(timesRaw ?? defaultTimes);
+
     dispatch(loadTime(time));
     dispatch(loadPlayers(players));
   } catch (err: any) {
     console.error(err);
+    await clearData();
     throw err;
   }
 }
