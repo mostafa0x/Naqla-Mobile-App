@@ -3,6 +3,7 @@ import LeaderBoard from "@/components/Leaderboard";
 import AddPlayerModel from "@/components/Models/AddPlayerModel";
 import StartButton from "@/components/StartButton";
 import VS from "@/components/Vs";
+import LoadingVS from "@/components/Vs/Loading";
 import { Colors, Fonts } from "@/constants/theme";
 import { useAudioContext } from "@/context/AuidoPlayerProvider";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
@@ -11,7 +12,7 @@ import { clearData } from "@/service/Storage";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
@@ -57,7 +58,9 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.sectionVs}>
-          <VS playSound={playSound} />
+          <Suspense fallback={<LoadingVS />}>
+            <VS playSound={playSound} />
+          </Suspense>
         </View>
         <View style={styles.startBtn}>
           <StartButton router={router} />

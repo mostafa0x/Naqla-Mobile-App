@@ -1,7 +1,8 @@
 import { pathSounds } from "@/types";
-type typeNumber = 1 | 2 | 3 | 4 | 5 | 6;
-export default function randomEndMusic(playMusic: (path: pathSounds) => void) {
-  const randomNum: typeNumber = (Math.floor(Math.random() * 6) +
-    1) as typeNumber;
-  playMusic(`end${randomNum}`);
+import { statusGame } from "@/types/GameSliceType";
+export default function randomEndMusic(
+  playMusic: (path: pathSounds) => void,
+  statusGame: statusGame
+) {
+  statusGame === "draw" ? playMusic("draw") : playMusic("win");
 }

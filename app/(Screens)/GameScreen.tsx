@@ -76,7 +76,7 @@ export default function GameScreen() {
     ) {
       statusGame === "winP1" && dispatch(gameOver(1));
       statusGame === "winP2" && dispatch(gameOver(2));
-      randomEndMusic(playMusic);
+      randomEndMusic(playMusic, statusGame);
     }
     return () => {};
   }, [statusGame]);

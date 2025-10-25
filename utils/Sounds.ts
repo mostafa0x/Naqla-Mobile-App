@@ -1,6 +1,7 @@
 export const sounds = {
   empty: "",
-  click: require("@/assets/sounds/ui/click-mouse.mp3"),
+  click: require("@/assets/sounds/ui/click-UI.mp3"),
+  click2: require("@/assets/sounds/ui/click-mouse.mp3"),
 
   move1: require("@/assets/sounds/move/move1.mp3"),
   move2: require("@/assets/sounds/move/yh-mlk-tkhdyt.mp3"),
@@ -16,12 +17,8 @@ export const sounds = {
 
   yallaBena: require("@/assets/sounds/home/yallaBena.mp3"),
 
-  end1: require("@/assets/sounds/end/end1.mp3"),
-  end2: require("@/assets/sounds/end/end2.mp3"),
-  end3: require("@/assets/sounds/end/end3.mp3"),
-  end4: require("@/assets/sounds/end/end4.mp3"),
-  end5: require("@/assets/sounds/end/end5.mp3"),
-  end6: require("@/assets/sounds/end/end6.mp3"),
+  win: require("@/assets/sounds/end/win.mp3"),
+  draw: require("@/assets/sounds/end/draw.mp3"),
 
   s30_1: require("@/assets/sounds/timer/ym_YsUTneM.mp3"),
   s30_2: require("@/assets/sounds/timer/nt-khsrn-kl-hjh_22YG8gk.mp3"),
@@ -30,6 +27,9 @@ export const sounds = {
   s30_5: require("@/assets/sounds/timer/qbd-lb-b.mp3"),
   s30_6: require("@/assets/sounds/timer/bhjt-sbr-msh-wqth.mp3"),
   s30_7: require("@/assets/sounds/timer/snore-mimimimimimi.mp3"),
+  s30_8: require("@/assets/sounds/timer/5ngren.mp3"),
+  s30_9: require("@/assets/sounds/timer/anto-bt3mlo.mp3"),
+  s30_10: require("@/assets/sounds/timer/3om_samy.mp3"),
 
   s50_1: require("@/assets/sounds/timer/wn_khkhkhkh.mp3"),
   s50_2: require("@/assets/sounds/timer/ntw-yh-wnhn-myn.mp3"),
