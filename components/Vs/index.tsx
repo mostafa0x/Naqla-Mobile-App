@@ -1,11 +1,16 @@
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppSelector } from "@/hooks/useStore";
+import { pathSounds } from "@/types";
 import { rf, rw } from "@/utils/dimensions";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import ItemVs from "./item";
 
-export default function VS() {
+export default function VS({
+  playSound,
+}: {
+  playSound: (path: pathSounds) => void;
+}) {
   const { players, player1Index, player2Index } = useAppSelector(
     (state) => state.AppReducer
   );
@@ -18,9 +23,17 @@ export default function VS() {
         </View>
       ) : (
         <>
-          <ItemVs player={players[player1Index]} side={1} />
+          <ItemVs
+            player={players[player1Index]}
+            side={1}
+            playSound={playSound}
+          />
           <Text style={styles.vs}>VS</Text>
-          <ItemVs player={players[player2Index]} side={2} />
+          <ItemVs
+            player={players[player2Index]}
+            side={2}
+            playSound={playSound}
+          />
         </>
       )}
     </View>

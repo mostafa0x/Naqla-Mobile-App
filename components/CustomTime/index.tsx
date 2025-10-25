@@ -1,4 +1,5 @@
 import { Colors, Fonts } from "@/constants/theme";
+import { useAudioContext } from "@/context/AuidoPlayerProvider";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { addTime } from "@/lib/store/GameSlice";
 import cheackDisabledSaveBtn from "@/service/cheackDisabledSaveBtn";
@@ -12,6 +13,7 @@ import { Button } from "react-native-paper";
 function CustomTime() {
   const dispatch = useAppDispatch();
   const { times } = useAppSelector((state) => state.GameReducer);
+  const { playSound } = useAudioContext();
   const [mTime, setMTime] = useState("");
   const [sTime, setSTime] = useState("");
   const [nameTime, setNameTime] = useState("");
@@ -37,6 +39,7 @@ function CustomTime() {
     }
   }, []);
   const handleAdd = useCallback(() => {
+    playSound("click");
     dispatch(
       addTime({
         name: nameTime,

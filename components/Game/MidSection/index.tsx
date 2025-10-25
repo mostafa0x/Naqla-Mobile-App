@@ -1,4 +1,5 @@
 import { Colors } from "@/constants/theme";
+import { useAudioContext } from "@/context/AuidoPlayerProvider";
 import { useAppDispatch } from "@/hooks/useStore";
 import { restartGame, setStatusGame } from "@/lib/store/GameSlice";
 import { statusGame } from "@/types/GameSliceType";
@@ -18,22 +19,26 @@ function MidSection({
   const iconSize = 32;
   const iconColor = Colors.secondaryText;
   const dispatch = useAppDispatch();
+  const { stopAllAudios, playSound } = useAudioContext();
   return (
     <View style={styles.container}>
       {statusGame === "playing" ? (
         <TouchableOpacity
-          onPress={() =>
-            statusGame === "playing" && dispatch(setStatusGame("pause"))
-          }
+          onPress={() => {
+            playSound("click");
+
+            statusGame === "playing" && dispatch(setStatusGame("pause"));
+          }}
         >
           <Icon source={"pause"} color={iconColor} size={rw(iconSize)} />
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
-          onPress={() =>
+          onPress={() => {
             (statusGame === "pause" || statusGame === "waiting") &&
-            dispatch(setStatusGame("playing"))
-          }
+              dispatch(setStatusGame("playing"));
+            playSound("click");
+          }}
         >
           <Icon source={"play"} color={iconColor} size={rw(iconSize)} />
         </TouchableOpacity>
@@ -41,6 +46,7 @@ function MidSection({
       <TouchableOpacity
         onPress={() => {
           statusGame === "playing" && dispatch(setStatusGame("pause"));
+          playSound("click");
           openSelectModel();
         }}
       >
@@ -49,6 +55,8 @@ function MidSection({
       <TouchableOpacity
         onPress={() => {
           statusGame === "playing" && dispatch(setStatusGame("pause"));
+          playSound("click");
+
           openSelectTIme();
         }}
       >
@@ -59,7 +67,14 @@ function MidSection({
         />
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => dispatch(restartGame())}>
+      <TouchableOpacity
+        onPress={() => {
+          stopAllAudios();
+          playSound("click");
+
+          dispatch(restartGame());
+        }}
+      >
         <Icon source={"restore"} color={iconColor} size={rw(iconSize)} />
       </TouchableOpacity>
     </View>

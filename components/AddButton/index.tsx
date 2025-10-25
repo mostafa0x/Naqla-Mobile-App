@@ -1,11 +1,24 @@
 import { Colors, Fonts } from "@/constants/theme";
+import { pathSounds } from "@/types";
 import { rf, rh, rw } from "@/utils/dimensions";
 import React, { memo } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import PlusIcon from "../icons/PlusIcon";
-function AddButton({ openModel }: { openModel: () => void }) {
+function AddButton({
+  openModel,
+  playSound,
+}: {
+  openModel: () => void;
+  playSound: (path: pathSounds) => void;
+}) {
   return (
-    <TouchableOpacity onPress={openModel} style={styles.container}>
+    <TouchableOpacity
+      onPress={() => {
+        playSound("click");
+        openModel();
+      }}
+      style={styles.container}
+    >
       <PlusIcon />
     </TouchableOpacity>
   );

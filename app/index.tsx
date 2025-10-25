@@ -17,7 +17,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function HomeScreen() {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const { stopAllAudios } = useAudioContext();
+  const { stopAllAudios, playSound } = useAudioContext();
   const [modelAddPlayer, setModelAddPlayer] = useState(false);
   const { players } = useAppSelector((state) => state.AppReducer);
   const openModel = useCallback(() => {
@@ -53,11 +53,11 @@ export default function HomeScreen() {
           </View>
         </View>
         <View>
-          <LeaderBoard openModel={openModel} />
+          <LeaderBoard openModel={openModel} playSound={playSound} />
         </View>
 
         <View style={styles.sectionVs}>
-          <VS />
+          <VS playSound={playSound} />
         </View>
         <View style={styles.startBtn}>
           <StartButton router={router} />

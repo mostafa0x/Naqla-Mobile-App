@@ -1,5 +1,6 @@
 export const sounds = {
   empty: "",
+  click: require("@/assets/sounds/ui/click-mouse.mp3"),
   duck: require("@/assets/sounds/ui/duck.mp3"),
   move: require("@/assets/sounds/ui/move.mp3"),
   yallaBena: require("@/assets/sounds/home/yallaBena.mp3"),

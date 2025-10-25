@@ -1,5 +1,6 @@
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppSelector } from "@/hooks/useStore";
+import { pathSounds } from "@/types";
 import { player } from "@/types/AppSliceType";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { FlashList } from "@shopify/flash-list";
@@ -8,7 +9,13 @@ import { StyleSheet, Text, View } from "react-native";
 import AddButton from "../AddButton";
 import Item from "./item";
 
-function LeaderBoard({ openModel }: { openModel: () => void }) {
+function LeaderBoard({
+  openModel,
+  playSound,
+}: {
+  openModel: () => void;
+  playSound: (path: pathSounds) => void;
+}) {
   const { Leaderborad } = useAppSelector((state) => state.AppReducer);
   const renderItem = useCallback(
     ({ item, index }: { item: player; index: number }) => {
@@ -33,7 +40,7 @@ function LeaderBoard({ openModel }: { openModel: () => void }) {
     <View style={styles.container}>
       <View style={styles.mainContainer}>
         <Text style={styles.mainLabel}>Leaderboard</Text>
-        <AddButton openModel={openModel} />
+        <AddButton openModel={openModel} playSound={playSound} />
       </View>
       <View style={styles.upperContainer}>
         <Text style={styles.upperLabel}>Name</Text>

@@ -1,4 +1,5 @@
 import { Colors, Fonts } from "@/constants/theme";
+import { useAudioContext } from "@/context/AuidoPlayerProvider";
 import { useAppDispatch } from "@/hooks/useStore";
 import { deleteTime, restartGame, setCurrTimeId } from "@/lib/store/GameSlice";
 import { TimeType } from "@/types/GameSliceType";
@@ -15,13 +16,17 @@ function Item_TimeList({
   currTimeId: number;
 }) {
   const disptach = useAppDispatch();
+  const { playSound } = useAudioContext();
   const activeBtn = item.id === currTimeId;
   const handlePress = useCallback(() => {
+    playSound("click");
+
     disptach(restartGame());
     disptach(setCurrTimeId(item.id));
   }, []);
 
   const handleDelete = useCallback(() => {
+    playSound("click");
     disptach(deleteTime(item.id));
   }, [item]);
 

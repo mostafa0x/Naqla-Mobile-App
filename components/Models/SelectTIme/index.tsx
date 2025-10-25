@@ -16,6 +16,7 @@ function SelectTIme({
   closeSelectTIme: () => void;
 }) {
   const { times } = useAppSelector((state) => state.GameReducer);
+
   return (
     <Portal>
       {isSelectTime && (

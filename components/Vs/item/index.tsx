@@ -1,14 +1,28 @@
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppDispatch } from "@/hooks/useStore";
 import { changePlayersIndex } from "@/lib/store/AppSlice";
+import { pathSounds } from "@/types";
 import { player } from "@/types/AppSliceType";
 import { rf, rh, rw } from "@/utils/dimensions";
-import React, { memo } from "react";
+import React, { memo, useCallback } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-paper";
 
-function ItemVs({ player, side }: { player: player; side: 1 | 2 }) {
+function ItemVs({
+  player,
+  side,
+  playSound,
+}: {
+  player: player;
+  side: 1 | 2;
+  playSound: (path: pathSounds) => void;
+}) {
   const dispatch = useAppDispatch();
+
+  const handlePress = useCallback(() => {
+    playSound("click");
+    dispatch(changePlayersIndex(side));
+  }, []);
 
   return (
     <View style={styles.upperContainer}>
@@ -17,10 +31,7 @@ function ItemVs({ player, side }: { player: player; side: 1 | 2 }) {
         color={side === 1 ? "#fff" : "#000000ff"}
         size={rf(42)}
       />
-      <TouchableOpacity
-        onPress={() => dispatch(changePlayersIndex(side))}
-        style={styles.container}
-      >
+      <TouchableOpacity onPress={handlePress} style={styles.container}>
         <Text style={styles.namePlayer}>{player.name}</Text>
       </TouchableOpacity>
     </View>
