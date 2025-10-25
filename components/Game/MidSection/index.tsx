@@ -46,7 +46,12 @@ function MidSection({
       >
         <Icon source={"progress-check"} color={iconColor} size={rw(iconSize)} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={openSelectTIme}>
+      <TouchableOpacity
+        onPress={() => {
+          statusGame === "playing" && dispatch(setStatusGame("pause"));
+          openSelectTIme();
+        }}
+      >
         <Icon
           source={"timer-cog-outline"}
           color={iconColor}

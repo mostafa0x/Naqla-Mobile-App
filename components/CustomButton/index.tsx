@@ -33,7 +33,8 @@ function CustomButton({
       closeSelectModel && closeSelectModel();
     } else if (type === 4) {
       dispatch(setDraw());
-      dispatch(restartGame());
+      dispatch(setStatusGame("draw"));
+      // dispatch(restartGame());
 
       closeSelectModel && closeSelectModel();
     } else if (type === 5) {

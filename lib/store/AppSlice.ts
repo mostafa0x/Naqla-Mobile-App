@@ -70,6 +70,7 @@ const AppSlice = createSlice({
     setDraw: (state) => {
       const p1 = state.players[state.player1Index];
       const p2 = state.players[state.player2Index];
+
       const newP1 = {
         ...p1,
         drawCount: p1.drawCount + 1,

@@ -26,7 +26,7 @@ function SideSection({
       onPress={() => {
         if (turn === side) {
           randomMoveSound(playSound);
-          handleClickSides(dispatch, statusGame);
+          handleClickSides(dispatch, statusGame, turn);
         }
       }}
       style={[
@@ -36,7 +36,8 @@ function SideSection({
           (statusGame === "pause" ||
           statusGame === "waiting" ||
           statusGame === "winP1" ||
-          statusGame === "winP2"
+          statusGame === "winP2" ||
+          statusGame === "draw"
             ? styles.myTurnPause
             : styles.myTurn),
       ]}

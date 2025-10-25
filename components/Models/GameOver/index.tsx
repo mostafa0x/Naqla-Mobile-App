@@ -8,7 +8,7 @@ import React, { memo } from "react";
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Portal } from "react-native-paper";
 
-function WiningModel({ Winner }: { Winner: "winP1" | "winP2" | null }) {
+function GameOver({ Winner }: { Winner: "winP1" | "winP2" | "draw" | null }) {
   const { players, player1Index, player2Index } = useAppSelector(
     (state) => state.AppReducer
   );
@@ -25,12 +25,12 @@ function WiningModel({ Winner }: { Winner: "winP1" | "winP2" | null }) {
         <View style={styles.contant}>
           <View style={styles.box}>
             <Text style={styles.mainLabel}>
-              {checkWinner(Winner, players, player1Index, player2Index)} won
+              {checkWinner(Winner, players, player1Index, player2Index)}
             </Text>
             <View style={styles.btnsContainer}>
-              <CustomButton label="العوده " type={1} />
+              <CustomButton label="Back" type={1} />
 
-              <CustomButton label="اعاده المباراه" type={2} />
+              <CustomButton label="Rematch" type={2} />
             </View>
 
             <TouchableOpacity style={styles.closeBtn}></TouchableOpacity>
@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  test: { backgroundColor: "rgba(255,255,255,0.2)" },
   mainLabel: {
     fontFamily: Fonts.TajawalBlack,
     fontSize: rf(32),
@@ -84,4 +83,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default memo(WiningModel);
+export default memo(GameOver);

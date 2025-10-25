@@ -42,7 +42,9 @@ function SelectTIme({
                 <CloseIcon width={rw(32)} height={rh(32)} color={"#fff"} />
               </TouchableOpacity>
             </View>
-            <CustomTime />
+            <View style={styles.cutsom}>
+              <CustomTime />
+            </View>
             <View style={styles.list}>
               <TimeList />
             </View>
@@ -58,6 +60,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
   },
   appbarContainer: {
     flexDirection: "row",
@@ -65,8 +68,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   box: {
-    width: rw(250),
-    height: rh(600),
+    width: rw(280),
+    height: rh(650),
     borderRadius: rw(20),
     backgroundColor: Colors.bannaer,
     paddingLeft: rw(9),
@@ -86,8 +89,11 @@ const styles = StyleSheet.create({
     fontSize: rf(22),
     color: Colors.primaryText,
   },
+  cutsom: {
+    marginTop: rh(15),
+  },
   list: {
-    marginTop: rh(35),
+    marginTop: rh(50),
   },
 });
 

@@ -1,18 +1,19 @@
 import MidSection from "@/components/Game/MidSection";
 import SideSection from "@/components/Game/SideSection";
+import GameOver from "@/components/Models/GameOver";
 import SelectTIme from "@/components/Models/SelectTIme";
 import SelectWinner from "@/components/Models/SelectWinner";
-import WiningModel from "@/components/Models/WiningModel";
+import { useAudioContext } from "@/context/AuidoPlayerProvider";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { gameOver } from "@/lib/store/AppSlice";
-import { restartGame, subTime } from "@/lib/store/GameSlice";
+import { addToTimer, restartGame, subTime } from "@/lib/store/GameSlice";
 import { setPlayers } from "@/service/Storage";
 import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 export default function GameScreen() {
   const dispatch = useAppDispatch();
-
+  const { playMusic } = useAudioContext();
   const { players, player1Index, player2Index } = useAppSelector(
     (state) => state.AppReducer
   );
@@ -23,6 +24,8 @@ export default function GameScreen() {
     turn,
     player1Moves,
     player2Moves,
+    timerP1,
+    timerP2,
     times,
   } = useAppSelector((state) => state.GameReducer);
 
@@ -47,6 +50,7 @@ export default function GameScreen() {
     let time = 0;
     if (statusGame === "playing") {
       time = setInterval(() => {
+        dispatch(addToTimer(turn));
         dispatch(subTime(turn));
       }, 1000);
     }
@@ -57,10 +61,8 @@ export default function GameScreen() {
   }, [statusGame, turn]);
 
   useEffect(() => {
-    if (statusGame === "winP1") {
-      dispatch(gameOver(1));
-    } else if (statusGame === "winP2") {
-      dispatch(gameOver(2));
+    if (statusGame === "winP1" || statusGame === "winP2") {
+      statusGame === "winP1" ? dispatch(gameOver(1)) : dispatch(gameOver(2));
     }
     return () => {};
   }, [statusGame]);
@@ -102,9 +104,13 @@ export default function GameScreen() {
           moves={player1Moves}
         />
       </View>
-      <WiningModel
+      <GameOver
         Winner={
-          statusGame === "winP1" || statusGame === "winP2" ? statusGame : null
+          statusGame === "winP1" ||
+          statusGame === "winP2" ||
+          statusGame === "draw"
+            ? statusGame
+            : null
         }
       />
       <SelectWinner

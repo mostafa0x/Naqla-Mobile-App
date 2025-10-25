@@ -11,7 +11,13 @@ export interface GameSliceType {
   times: TimeType[];
 }
 
-export type statusGame = "waiting" | "playing" | "pause" | "winP1" | "winP2";
+export type statusGame =
+  | "waiting"
+  | "playing"
+  | "pause"
+  | "winP1"
+  | "draw"
+  | "winP2";
 
 export type SideType = 1 | 2;
 
