@@ -1,6 +1,7 @@
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppDispatch } from "@/hooks/useStore";
 import { changePlayersIndex } from "@/lib/store/AppSlice";
+import { restartGame } from "@/lib/store/GameSlice";
 import { pathSounds } from "@/types";
 import { player } from "@/types/AppSliceType";
 import { rf, rh, rw } from "@/utils/dimensions";
@@ -12,16 +13,19 @@ function ItemVs({
   player,
   side,
   playSound,
+  from,
 }: {
   player: player;
   side: 1 | 2;
   playSound: (path: pathSounds) => void;
+  from: "home" | "game";
 }) {
   const dispatch = useAppDispatch();
 
   const handlePress = useCallback(() => {
     playSound("click");
     dispatch(changePlayersIndex(side));
+    from === "game" && dispatch(restartGame());
   }, []);
 
   return (
@@ -31,7 +35,10 @@ function ItemVs({
         color={side === 1 ? "#fff" : "#000000ff"}
         size={rf(42)}
       />
-      <TouchableOpacity onPress={handlePress} style={styles.container}>
+      <TouchableOpacity
+        onPress={handlePress}
+        style={[styles.container, from === "game" && styles.fromGame]}
+      >
         <Text style={styles.namePlayer}>{player.name}</Text>
       </TouchableOpacity>
     </View>
@@ -49,6 +56,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.bannaer,
     justifyContent: "center",
     alignItems: "center",
+  },
+  fromGame: {
+    backgroundColor: "#0e2418ff",
   },
 
   namePlayer: {

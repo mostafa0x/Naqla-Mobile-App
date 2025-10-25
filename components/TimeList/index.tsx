@@ -44,7 +44,7 @@ function TimeList() {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: rh(370),
+    height: rh(270),
   },
   itemSeparator: {
     height: rh(15),

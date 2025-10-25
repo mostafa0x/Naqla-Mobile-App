@@ -8,8 +8,10 @@ import ItemVs from "./item";
 
 export default function VS({
   playSound,
+  from,
 }: {
   playSound: (path: pathSounds) => void;
+  from: "home" | "game";
 }) {
   const { players, player1Index, player2Index } = useAppSelector(
     (state) => state.AppReducer
@@ -27,12 +29,14 @@ export default function VS({
             player={players[player1Index]}
             side={1}
             playSound={playSound}
+            from={from}
           />
           <Text style={styles.vs}>VS</Text>
           <ItemVs
             player={players[player2Index]}
             side={2}
             playSound={playSound}
+            from={from}
           />
         </>
       )}

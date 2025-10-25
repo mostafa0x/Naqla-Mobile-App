@@ -1,8 +1,10 @@
 import CustomTime from "@/components/CustomTime";
 import CloseIcon from "@/components/icons/CloseIcon";
 import TimeList from "@/components/TimeList";
+import VS from "@/components/Vs";
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppSelector } from "@/hooks/useStore";
+import { pathSounds } from "@/types";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { BlurView } from "expo-blur";
 import React, { memo } from "react";
@@ -11,9 +13,11 @@ import { Portal } from "react-native-paper";
 function SelectTIme({
   isSelectTime,
   closeSelectTIme,
+  playSound,
 }: {
   isSelectTime: boolean;
   closeSelectTIme: () => void;
+  playSound: (path: pathSounds) => void;
 }) {
   const { times } = useAppSelector((state) => state.GameReducer);
 
@@ -49,6 +53,9 @@ function SelectTIme({
             <View style={styles.list}>
               <TimeList />
             </View>
+            <View style={styles.vsContainer}>
+              <VS playSound={playSound} from={"game"} />
+            </View>
           </View>
         </View>
       </Modal>
@@ -69,7 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   box: {
-    width: rw(280),
+    width: rw(340),
     height: rh(650),
     borderRadius: rw(20),
     backgroundColor: Colors.bannaer,
@@ -95,6 +102,11 @@ const styles = StyleSheet.create({
   },
   list: {
     marginTop: rh(50),
+  },
+  vsContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: rh(20),
   },
 });
 

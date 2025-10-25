@@ -15,7 +15,7 @@ import { StyleSheet, View } from "react-native";
 
 export default function GameScreen() {
   const dispatch = useAppDispatch();
-  const { playMusic } = useAudioContext();
+  const { playMusic, playSound } = useAudioContext();
   const { players, player1Index, player2Index } = useAppSelector(
     (state) => state.AppReducer
   );
@@ -134,6 +134,7 @@ export default function GameScreen() {
       <SelectTIme
         isSelectTime={isSelectTime}
         closeSelectTIme={closeSelectTIme}
+        playSound={playSound}
       />
     </>
   );
