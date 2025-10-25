@@ -19,7 +19,8 @@ function MidSection({
   const iconSize = 32;
   const iconColor = Colors.secondaryText;
   const dispatch = useAppDispatch();
-  const { stopAllAudios, playSound } = useAudioContext();
+  const { stopAllAudios, playSound, muteOrNotAllAudios, statusSounds } =
+    useAudioContext();
   return (
     <View style={styles.container}>
       {statusGame === "playing" ? (
@@ -52,6 +53,7 @@ function MidSection({
       >
         <Icon source={"progress-check"} color={iconColor} size={rw(iconSize)} />
       </TouchableOpacity>
+
       <TouchableOpacity
         onPress={() => {
           statusGame === "playing" && dispatch(setStatusGame("pause"));
@@ -62,6 +64,18 @@ function MidSection({
       >
         <Icon
           source={"timer-cog-outline"}
+          color={iconColor}
+          size={rw(iconSize)}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          muteOrNotAllAudios();
+          playSound("click");
+        }}
+      >
+        <Icon
+          source={statusSounds?.mute ? "volume-off" : "volume-high"}
           color={iconColor}
           size={rw(iconSize)}
         />

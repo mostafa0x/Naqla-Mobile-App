@@ -1,15 +1,17 @@
 import { pathSounds } from "@/types";
 import { AudioContextType } from "@/types/AudioContextType";
 import { sounds } from "@/utils/Sounds";
-import { useAudioPlayer } from "expo-audio";
+import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
 import React, { createContext, useCallback, useContext } from "react";
 
 const AudioContext = createContext<AudioContextType>({
   audioSounds: null,
   audioMusic: null,
+  statusSounds: null,
   playMusic: () => {},
   playSound: () => {},
   stopAllAudios: () => {},
+  muteOrNotAllAudios: () => {},
 });
 export default function AuidoPlayerProvider({
   children,
@@ -18,6 +20,8 @@ export default function AuidoPlayerProvider({
 }) {
   const audioSounds = useAudioPlayer();
   const audioMusic = useAudioPlayer();
+  const statusSounds = useAudioPlayerStatus(audioSounds);
+  const statusMusic = useAudioPlayerStatus(audioMusic);
 
   const playSound = useCallback((key: pathSounds) => {
     audioSounds.replace(sounds[key]);
@@ -36,9 +40,23 @@ export default function AuidoPlayerProvider({
     audioSounds.replace("");
   }, []);
 
+  const muteOrNotAllAudios = useCallback(() => {
+    const value = audioSounds.muted ? false : true;
+    audioMusic.muted = value;
+    audioSounds.muted = value;
+  }, []);
+
   return (
     <AudioContext.Provider
-      value={{ audioMusic, audioSounds, playSound, playMusic, stopAllAudios }}
+      value={{
+        audioMusic,
+        audioSounds,
+        statusSounds,
+        playSound,
+        playMusic,
+        stopAllAudios,
+        muteOrNotAllAudios,
+      }}
     >
       {children}
     </AudioContext.Provider>
