@@ -6,8 +6,6 @@ export default function playTimerSounds(
   playMusic: (path: pathSounds) => void,
   timer: number
 ) {
-  console.log(timer);
-
   if (timer === 30) {
     return playMusic(randomS30Music());
   } else if (timer === 50) {

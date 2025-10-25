@@ -25,7 +25,7 @@ function SideSection({
       disabled={side !== turn}
       onPress={() => {
         if (turn === side) {
-          randomMoveSound(playSound);
+          randomMoveSound(playSound, moves);
           handleClickSides(dispatch, statusGame, turn);
         }
       }}
