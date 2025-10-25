@@ -1,7 +1,9 @@
 import { pathSounds } from "@/types";
 type typeNumber = 1 | 2 | 3 | 4 | 5 | 6;
-export default function randomEndMusic(playMusic: (path: pathSounds) => void) {
+
+export default function randomS30Music(): pathSounds {
   const randomNum: typeNumber = (Math.floor(Math.random() * 6) +
     1) as typeNumber;
-  playMusic(`end${randomNum}`);
+
+  return `s30_${randomNum}`;
 }

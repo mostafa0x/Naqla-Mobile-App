@@ -7,4 +7,5 @@ export interface AudioContextType {
 
   playSound: (path: pathSounds) => void;
   playMusic: (path: pathSounds) => void;
+  stopAllAudios: () => void;
 }

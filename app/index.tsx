@@ -4,6 +4,7 @@ import AddPlayerModel from "@/components/Models/AddPlayerModel";
 import StartButton from "@/components/StartButton";
 import VS from "@/components/Vs";
 import { Colors, Fonts } from "@/constants/theme";
+import { useAudioContext } from "@/context/AuidoPlayerProvider";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { setLeaderboard } from "@/lib/store/AppSlice";
 import { clearData } from "@/service/Storage";
@@ -16,6 +17,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function HomeScreen() {
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const { stopAllAudios } = useAudioContext();
   const [modelAddPlayer, setModelAddPlayer] = useState(false);
   const { players } = useAppSelector((state) => state.AppReducer);
   const openModel = useCallback(() => {
@@ -31,6 +33,7 @@ export default function HomeScreen() {
   }, [players]);
 
   useEffect(() => {
+    stopAllAudios();
     const clear = async () => {
       clearData();
     };

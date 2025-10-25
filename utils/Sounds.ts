@@ -1,5 +1,23 @@
 export const sounds = {
+  empty: "",
   duck: require("@/assets/sounds/ui/duck.mp3"),
   move: require("@/assets/sounds/ui/move.mp3"),
   yallaBena: require("@/assets/sounds/home/yallaBena.mp3"),
+  end1: require("@/assets/sounds/end/end1.mp3"),
+  end2: require("@/assets/sounds/end/end2.mp3"),
+  end3: require("@/assets/sounds/end/end3.mp3"),
+  end4: require("@/assets/sounds/end/end4.mp3"),
+  end5: require("@/assets/sounds/end/end5.mp3"),
+  end6: require("@/assets/sounds/end/end6.mp3"),
+  s30_1: require("@/assets/sounds/timer/ym_YsUTneM.mp3"),
+  s30_2: require("@/assets/sounds/timer/nt-khsrn-kl-hjh_22YG8gk.mp3"),
+  s30_3: require("@/assets/sounds/timer/mt-ytsh.mp3"),
+  s30_4: require("@/assets/sounds/timer/bqt-mlyh-shkhsyh-bhjt-sbr.mp3"),
+  s30_5: require("@/assets/sounds/timer/qbd-lb-b.mp3"),
+  s30_6: require("@/assets/sounds/timer/bhjt-sbr-msh-wqth.mp3"),
+
+  s50_1: require("@/assets/sounds/timer/wn_khkhkhkh.mp3"),
+  s50_2: require("@/assets/sounds/timer/ntw-yh-wnhn-myn.mp3"),
+  s50_3: require("@/assets/sounds/timer/tmprrkoe6go.mp3"),
+  s50_4: require("@/assets/sounds/timer/tb-lk.mp3"),
 };

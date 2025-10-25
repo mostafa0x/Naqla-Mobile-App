@@ -7,6 +7,8 @@ import { useAudioContext } from "@/context/AuidoPlayerProvider";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { gameOver } from "@/lib/store/AppSlice";
 import { addToTimer, restartGame, subTime } from "@/lib/store/GameSlice";
+import playTimerSounds from "@/service/playTimerSounds";
+import randomEndMusic from "@/service/randomEndMusic";
 import { setPlayers } from "@/service/Storage";
 import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
@@ -61,8 +63,20 @@ export default function GameScreen() {
   }, [statusGame, turn]);
 
   useEffect(() => {
-    if (statusGame === "winP1" || statusGame === "winP2") {
-      statusGame === "winP1" ? dispatch(gameOver(1)) : dispatch(gameOver(2));
+    const timer = turn === 1 ? timerP1 : timerP2;
+    playTimerSounds(playMusic, timer);
+    return () => {};
+  }, [timerP1, timerP2, turn]);
+
+  useEffect(() => {
+    if (
+      statusGame === "winP1" ||
+      statusGame === "winP2" ||
+      statusGame === "draw"
+    ) {
+      statusGame === "winP1" && dispatch(gameOver(1));
+      statusGame === "winP2" && dispatch(gameOver(2));
+      randomEndMusic(playMusic);
     }
     return () => {};
   }, [statusGame]);

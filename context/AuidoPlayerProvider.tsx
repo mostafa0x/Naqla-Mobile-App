@@ -9,6 +9,7 @@ const AudioContext = createContext<AudioContextType>({
   audioMusic: null,
   playMusic: () => {},
   playSound: () => {},
+  stopAllAudios: () => {},
 });
 export default function AuidoPlayerProvider({
   children,
@@ -30,9 +31,14 @@ export default function AuidoPlayerProvider({
     audioMusic.play();
   }, []);
 
+  const stopAllAudios = useCallback(() => {
+    audioMusic.replace("");
+    audioSounds.replace("");
+  }, []);
+
   return (
     <AudioContext.Provider
-      value={{ audioMusic, audioSounds, playSound, playMusic }}
+      value={{ audioMusic, audioSounds, playSound, playMusic, stopAllAudios }}
     >
       {children}
     </AudioContext.Provider>
