@@ -8,12 +8,12 @@ import { StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 
 function StartButton({ router }: { router: Router }) {
-  const { playAudio } = useAudioContext();
+  const { playSound } = useAudioContext();
 
   const { players } = useAppSelector((state) => state.AppReducer);
   const active = players.length >= 2;
   const handlePress = useCallback(() => {
-    playAudio("yallaBena");
+    playSound("yallaBena");
     active && router.push("/GameScreen");
   }, [router, active]);
   return (

@@ -3,6 +3,7 @@ import { useAudioContext } from "@/context/AuidoPlayerProvider";
 import { useAppDispatch } from "@/hooks/useStore";
 import { formatTime } from "@/service/formatTime";
 import handleClickSides from "@/service/handleClickSides";
+import randomMoveSound from "@/service/randomMoveSound";
 import { SideSectionType } from "@/types/SideSectionType";
 import { rf, rh, rw } from "@/utils/dimensions";
 import React, { memo } from "react";
@@ -16,7 +17,7 @@ function SideSection({
   statusGame = "waiting",
   moves = 0,
 }: SideSectionType) {
-  const { playAudio } = useAudioContext();
+  const { playSound } = useAudioContext();
   const dispatch = useAppDispatch();
 
   return (
@@ -24,8 +25,7 @@ function SideSection({
       disabled={side !== turn}
       onPress={() => {
         if (turn === side) {
-          playAudio("click");
-
+          randomMoveSound(playSound);
           handleClickSides(dispatch, statusGame);
         }
       }}

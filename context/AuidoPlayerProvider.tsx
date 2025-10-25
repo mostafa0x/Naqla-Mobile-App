@@ -5,27 +5,35 @@ import { useAudioPlayer } from "expo-audio";
 import React, { createContext, useCallback, useContext } from "react";
 
 const AudioContext = createContext<AudioContextType>({
-  audio: null,
-  playAudio: () => {},
+  audioSounds: null,
+  audioMusic: null,
+  playMusic: () => {},
+  playSound: () => {},
 });
 export default function AuidoPlayerProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const audio = useAudioPlayer();
+  const audioSounds = useAudioPlayer();
+  const audioMusic = useAudioPlayer();
 
-  const playAudio = useCallback(
-    (key: pathSounds) => {
-      audio.replace(sounds[key]);
-      audio.seekTo(0);
-      audio.play();
-    },
-    [audio]
-  );
+  const playSound = useCallback((key: pathSounds) => {
+    audioSounds.replace(sounds[key]);
+    audioSounds.seekTo(0);
+    audioSounds.play();
+  }, []);
+
+  const playMusic = useCallback((key: pathSounds) => {
+    audioMusic.replace(sounds[key]);
+    audioMusic.seekTo(0);
+    audioMusic.play();
+  }, []);
 
   return (
-    <AudioContext.Provider value={{ audio, playAudio }}>
+    <AudioContext.Provider
+      value={{ audioMusic, audioSounds, playSound, playMusic }}
+    >
       {children}
     </AudioContext.Provider>
   );

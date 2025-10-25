@@ -14,7 +14,7 @@ function ItemVs({ player, side }: { player: player; side: 1 | 2 }) {
     <View style={styles.upperContainer}>
       <Icon
         source={"chess-queen"}
-        color={side === 1 ? "#fff" : "#000"}
+        color={side === 1 ? "#fff" : "#000000ff"}
         size={rf(42)}
       />
       <TouchableOpacity

@@ -16,7 +16,6 @@ export async function setTimes(time: TimeType[]) {
 export async function setPlayers(players: player[]) {
   try {
     await AsyncStorage.setItem("players", JSON.stringify(players));
-    console.log("xxx");
   } catch (err: any) {
     console.error(err);
 

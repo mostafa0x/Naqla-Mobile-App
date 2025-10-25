@@ -7,6 +7,8 @@ const initialState: GameSliceType = {
   player2Time: 5,
   player1Moves: 0,
   player2Moves: 0,
+  timerP1: 0,
+  timerP2: 0,
   turn: 1,
   statusGame: "waiting",
   currTimeId: 1,
@@ -47,6 +49,8 @@ const GameSlice = createSlice({
       state.player2Time = getTime(state.times, state.currTimeId);
       state.player1Moves = 0;
       state.player2Moves = 0;
+      state.timerP1 = 0;
+      state.timerP2 = 0;
       state.statusGame = "waiting";
       state.turn = 1;
     },
@@ -69,6 +73,22 @@ const GameSlice = createSlice({
       state.player1Time = getTime(state.times, state.currTimeId);
       state.player2Time = getTime(state.times, state.currTimeId);
     },
+    addToTimer: (state, action) => {
+      const timerId = action.payload;
+      if (timerId === 1) {
+        state.timerP1 += 1;
+      } else if (timerId === 2) {
+        state.timerP2 += 1;
+      }
+    },
+    restartTimers: (state, action) => {
+      const timerId = action.payload;
+      if (timerId === 1) {
+        state.timerP1 = 0;
+      } else if (timerId === 2) {
+        state.timerP2 = 0;
+      }
+    },
   },
 });
 
@@ -82,4 +102,6 @@ export const {
   addTime,
   loadTime,
   deleteTime,
+  addToTimer,
+  restartTimers,
 } = GameSlice.actions;

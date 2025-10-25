@@ -3,6 +3,8 @@ export interface GameSliceType {
   player2Time: number;
   player1Moves: number;
   player2Moves: number;
+  timerP1: number;
+  timerP2: number;
   turn: SideType;
   statusGame: statusGame;
   currTimeId: number;
