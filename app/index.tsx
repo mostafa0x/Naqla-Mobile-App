@@ -1,19 +1,19 @@
+import Appbar from "@/components/Appbar";
 import Ellipses from "@/components/Ellipses";
 import LeaderBoard from "@/components/Leaderboard";
 import AddPlayerModel from "@/components/Models/AddPlayerModel";
 import StartButton from "@/components/StartButton";
 import VS from "@/components/Vs";
 import LoadingVS from "@/components/Vs/Loading";
-import { Colors, Fonts } from "@/constants/theme";
 import { useAudioContext } from "@/context/AuidoPlayerProvider";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { setLeaderboard } from "@/lib/store/AppSlice";
 import { clearData } from "@/service/Storage";
-import { rf, rh, rw } from "@/utils/dimensions";
+import { rh, rw } from "@/utils/dimensions";
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Suspense, useCallback, useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 export default function HomeScreen() {
   const dispatch = useAppDispatch();
@@ -49,9 +49,7 @@ export default function HomeScreen() {
 
       <View style={styles.container}>
         <View style={styles.topSection}>
-          <View>
-            <Text style={styles.mainLabel}>نقلة | Naqla</Text>
-          </View>
+          <Appbar title="نقلة | Naqla" from="home" />
         </View>
         <View>
           <LeaderBoard openModel={openModel} playSound={playSound} />
@@ -59,7 +57,7 @@ export default function HomeScreen() {
 
         <View style={styles.sectionVs}>
           <Suspense fallback={<LoadingVS />}>
-            <VS playSound={playSound} />
+            <VS from="home" playSound={playSound} />
           </Suspense>
         </View>
         <View style={styles.startBtn}>
@@ -80,12 +78,6 @@ const styles = StyleSheet.create({
   topSection: {
     alignContent: "center",
     justifyContent: "center",
-  },
-  mainLabel: {
-    fontSize: rf(40),
-    fontFamily: Fonts.TajawalBold,
-    color: Colors.primaryText,
-    textAlign: "center",
   },
 
   sectionVs: {

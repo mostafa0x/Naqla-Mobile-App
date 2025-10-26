@@ -1,8 +1,8 @@
 import { rh, rw } from "@/utils/dimensions";
 import { Image } from "expo-image";
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet, View } from "react-native";
-export default function Ellipses({ type }: { type: 1 | 2 }) {
+function Ellipses({ type }: { type: 1 | 2 }) {
   const ellipsesImg = {
     1: require("@/assets/Ellipses/Ellipse1.png"),
     2: require("@/assets/Ellipses/Ellipse2.png"),
@@ -33,3 +33,5 @@ const styles = StyleSheet.create({
     height: rh(844),
   },
 });
+
+export default memo(Ellipses);

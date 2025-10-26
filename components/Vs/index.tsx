@@ -2,11 +2,11 @@ import { Colors, Fonts } from "@/constants/theme";
 import { useAppSelector } from "@/hooks/useStore";
 import { pathSounds } from "@/types";
 import { rf, rw } from "@/utils/dimensions";
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import ItemVs from "./item";
 
-export default function VS({
+function VS({
   playSound,
   from,
 }: {
@@ -67,3 +67,5 @@ const styles = StyleSheet.create({
     color: Colors.placeholder,
   },
 });
+
+export default memo(VS);
