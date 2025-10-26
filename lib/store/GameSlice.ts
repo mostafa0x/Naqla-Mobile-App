@@ -3,8 +3,8 @@ import { actionTypeStatusGame, AddTimeType } from "@/types";
 import { GameSliceType, SideType } from "@/types/GameSliceType";
 import { createSlice } from "@reduxjs/toolkit";
 const initialState: GameSliceType = {
-  player1Time: 5,
-  player2Time: 5,
+  player1Time: 600,
+  player2Time: 600,
   player1Moves: 0,
   player2Moves: 0,
   timerP1: 0,
@@ -37,11 +37,20 @@ const GameSlice = createSlice({
     },
     setStatusGame: (state, action: actionTypeStatusGame) => {
       state.statusGame = action.payload;
+      if (state.turn === 1 && state.player1Moves === 0) {
+        state.player1Moves += 1;
+        state.turn = 2;
+      }
     },
     setTurn: (state) => {
       const prevTurn = state.turn;
-      prevTurn == 1 ? (state.player1Moves += 1) : (state.player2Moves += 1);
-      state.turn = prevTurn == 1 ? 2 : 1;
+      if (prevTurn === 1 && state.player1Moves === 0) {
+        state.turn = 2;
+        state.player1Time += 1;
+      } else {
+        prevTurn == 1 ? (state.player1Moves += 1) : (state.player2Moves += 1);
+        state.turn = prevTurn == 1 ? 2 : 1;
+      }
     },
     restartGame: (state) => {
       const lenTimes = state.times.length;

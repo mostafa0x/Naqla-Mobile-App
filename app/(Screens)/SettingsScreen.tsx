@@ -51,10 +51,11 @@ const styles = StyleSheet.create({
   appBar: {
     paddingHorizontal: rw(19),
     paddingTop: rh(55),
+    marginBottom: rh(40),
   },
   oxContainer: {
     alignItems: "center",
-    marginTop: rh(200),
+    marginTop: rh(170),
   },
   oxImg: {
     width: rw(254),

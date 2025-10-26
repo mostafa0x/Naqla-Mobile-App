@@ -12,9 +12,9 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Provider as ReduxProvider } from "react-redux";
 
 SplashScreen.preventAutoHideAsync();
-useKeepAwake();
 
 export default function RootLayout() {
+  useKeepAwake();
   const [isLoadFonts] = useFonts({
     TajawalBlack: require("@/assets/fonts/Tajawal-Black.ttf"),
     TajawalBold: require("@/assets/fonts/Tajawal-Bold.ttf"),
