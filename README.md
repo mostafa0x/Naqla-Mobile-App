@@ -58,12 +58,9 @@ making every move more engaging and intense.
 ---
 
 ## 📸 Screenshots
-
-### 🏠 Home Screen
-![Home Screen](./assets/screenshots/home.png)
-
-### ⏱️ In-Game Clock
-![Clock Screen](./assets/screenshots/clock.png)
+| Home Screen | In-Game Screen |
+|--------------|----------------|
+| ![Home](./assets/screenshots/home.png) | ![Clock](./assets/screenshots/clock.png) |
 
 > _(You can insert your screenshots here when uploading to GitHub)_
 
