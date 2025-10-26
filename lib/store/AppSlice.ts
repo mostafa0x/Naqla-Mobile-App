@@ -89,6 +89,12 @@ const AppSlice = createSlice({
     loadPlayers: (state, action) => {
       state.players = action.payload;
     },
+    claerAll: (state) => {
+      state.players = [];
+      state.player1Index = 0;
+      state.player2Index = 1;
+      state.Leaderborad = [];
+    },
   },
 });
 
@@ -100,4 +106,5 @@ export const {
   setDraw,
   setLeaderboard,
   loadPlayers,
+  claerAll,
 } = AppSlice.actions;

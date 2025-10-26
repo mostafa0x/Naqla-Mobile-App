@@ -1,7 +1,6 @@
 import CustomTime from "@/components/CustomTime";
 import CloseIcon from "@/components/icons/CloseIcon";
 import TimeList from "@/components/TimeList";
-import VS from "@/components/Vs";
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppSelector } from "@/hooks/useStore";
 import { pathSounds } from "@/types";
@@ -53,9 +52,6 @@ function SelectTIme({
             <View style={styles.list}>
               <TimeList />
             </View>
-            <View style={styles.vsContainer}>
-              <VS playSound={playSound} from={"game"} />
-            </View>
           </View>
         </View>
       </Modal>
@@ -76,8 +72,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   box: {
-    width: rw(340),
-    height: rh(650),
+    width: rw(280),
+    height: rh(530),
     borderRadius: rw(20),
     backgroundColor: Colors.bannaer,
     paddingLeft: rw(9),

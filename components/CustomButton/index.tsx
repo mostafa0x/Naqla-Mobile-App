@@ -2,6 +2,8 @@ import { Colors, Fonts } from "@/constants/theme";
 import { useAppDispatch } from "@/hooks/useStore";
 import { setDraw } from "@/lib/store/AppSlice";
 import { restartGame, setStatusGame } from "@/lib/store/GameSlice";
+import { clearData } from "@/service/Storage";
+import { pathSounds } from "@/types";
 import { rf, rh, rw } from "@/utils/dimensions";
 import { useRouter } from "expo-router";
 import React, { memo } from "react";
@@ -13,17 +15,20 @@ function CustomButton({
   color = "#2E8B57",
   colorTxt = "#fff",
   closeSelectModel,
+  playSound,
 }: {
   label: string;
   type: number;
   color?: string;
   colorTxt?: string;
   closeSelectModel?: () => void;
+  playSound?: (path: pathSounds) => void;
 }) {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
-  const handlePress = () => {
+  const handlePress = async () => {
+    playSound && playSound("click");
     if (type === 1) {
       router.replace("/");
     } else if (type === 2) {
@@ -40,6 +45,8 @@ function CustomButton({
     } else if (type === 5) {
       dispatch(setStatusGame("winP2"));
       closeSelectModel && closeSelectModel();
+    } else if (type === 6) {
+      await clearData(dispatch);
     }
   };
   return (

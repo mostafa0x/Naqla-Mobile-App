@@ -1,4 +1,5 @@
 import { Colors, Fonts } from "@/constants/theme";
+import { pathSounds } from "@/types";
 import { rf, rw } from "@/utils/dimensions";
 import { useRouter } from "expo-router";
 import React, { memo } from "react";
@@ -9,13 +10,16 @@ import SettingIcon from "../icons/SettingIcon";
 function Appbar({
   title = "نقلة | Naqla",
   from = "home",
+  playSound,
 }: {
   title: string;
   from: "home" | "setting";
+  playSound: (path: pathSounds) => void;
 }) {
   const router = useRouter();
 
   function handlePress() {
+    playSound("click");
     const path = from === "home" ? "/SettingsScreen" : "/";
     router.push(path);
   }

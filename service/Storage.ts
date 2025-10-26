@@ -1,4 +1,4 @@
-import { loadPlayers } from "@/lib/store/AppSlice";
+import { claerAll, loadPlayers } from "@/lib/store/AppSlice";
 import { loadTime } from "@/lib/store/GameSlice";
 import { player } from "@/types/AppSliceType";
 import { TimeType } from "@/types/GameSliceType";
@@ -42,14 +42,22 @@ export async function getData(dispatch: any) {
     dispatch(loadPlayers(players));
   } catch (err: any) {
     console.error(err);
-    await clearData();
+    await clearData(dispatch);
     throw err;
   }
 }
 
-export async function clearData() {
+export async function clearData(dispatch: any) {
   try {
     await AsyncStorage.clear();
+    dispatch(
+      loadTime([
+        { name: "05m:00s", secounds: 300, id: 1 },
+        { name: "10m:00s", secounds: 600, id: 2 },
+        { name: "15m:00s", secounds: 900, id: 3 },
+      ])
+    );
+    dispatch(claerAll());
   } catch (err: any) {
     console.error(err);
     throw err;

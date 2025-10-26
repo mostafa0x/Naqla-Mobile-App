@@ -5,7 +5,7 @@ export default function randomMoveSound(
   playSound: (path: pathSounds) => void,
   moves: number
 ) {
-  const arr = [1, 1, 1, 2, 3];
+  const arr = [2, 2, 2, 1, 3, 3, 3];
   const randomNum = (Math.floor(Math.random() * 11) + 1) as typeNumber;
   const randomNumForPlay = arr[Math.floor(Math.random() * arr.length)];
 

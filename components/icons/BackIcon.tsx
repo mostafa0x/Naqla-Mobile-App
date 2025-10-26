@@ -2,7 +2,7 @@ import * as React from "react";
 import { memo } from "react";
 import Svg, { ClipPath, Defs, G, Path, SvgProps } from "react-native-svg";
 const BackIcon = (props: SvgProps) => (
-  <Svg width={24} height={24} fill="none" {...props}>
+  <Svg width={32} height={32} viewBox="0 0 24 24" fill="none" {...props}>
     <G
       stroke="#fff"
       strokeLinecap="round"

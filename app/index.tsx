@@ -36,7 +36,7 @@ export default function HomeScreen() {
   useEffect(() => {
     stopAllAudios();
     const clear = async () => {
-      clearData();
+      clearData(dispatch);
     };
     // clear();
     return () => {};
@@ -49,7 +49,7 @@ export default function HomeScreen() {
 
       <View style={styles.container}>
         <View style={styles.topSection}>
-          <Appbar title="نقلة | Naqla" from="home" />
+          <Appbar title="نقلة | Naqla" from="home" playSound={playSound} />
         </View>
         <View>
           <LeaderBoard openModel={openModel} playSound={playSound} />

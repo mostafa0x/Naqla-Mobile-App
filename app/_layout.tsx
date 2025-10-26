@@ -2,6 +2,7 @@ import { Colors } from "@/constants/theme";
 import AllProvidersContext from "@/context/AllProvidersContext";
 import { store } from "@/lib/store";
 import { useFonts } from "expo-font";
+import { useKeepAwake } from "expo-keep-awake";
 import * as NavigationBar from "expo-navigation-bar";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
@@ -9,7 +10,10 @@ import { Provider } from "react-native-paper";
 import "react-native-reanimated";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Provider as ReduxProvider } from "react-redux";
+
 SplashScreen.preventAutoHideAsync();
+useKeepAwake();
+
 export default function RootLayout() {
   const [isLoadFonts] = useFonts({
     TajawalBlack: require("@/assets/fonts/Tajawal-Black.ttf"),
