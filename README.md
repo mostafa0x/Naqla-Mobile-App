@@ -21,8 +21,8 @@ making every move more engaging and intense.
   Each player has a personal countdown timer that switches turns automatically.
 
 - 🧠 **Automatic Scoring System**  
-  - Win → +3 points  
-  - Draw → +1 point  
+  - Win → +1 points  
+  - Draw → +0.5 point  
   - Loss → 0 points  
   The leaderboard updates automatically after every game.
 
@@ -59,8 +59,11 @@ making every move more engaging and intense.
 
 ## 📸 Screenshots
 
-- 🏠 **Home Screen:** shows players, leaderboard, and start game button  
-- ⏱️ **In-Game Screen:** interactive dual chess clock with turn switching and sounds  
+### 🏠 Home Screen
+![Home Screen](./assets/screenshots/home.png)
+
+### ⏱️ In-Game Clock
+![Clock Screen](./assets/screenshots/clock.png)
 
 > _(You can insert your screenshots here when uploading to GitHub)_
 
