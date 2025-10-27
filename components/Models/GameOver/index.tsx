@@ -12,6 +12,8 @@ function GameOver({ Winner }: { Winner: "winP1" | "winP2" | "draw" | null }) {
   const { players, player1Index, player2Index } = useAppSelector(
     (state) => state.AppReducer
   );
+  console.log(players);
+
   return (
     <Portal>
       {!!Winner && (

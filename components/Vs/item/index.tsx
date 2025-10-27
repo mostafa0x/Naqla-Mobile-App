@@ -15,7 +15,7 @@ function ItemVs({
   playSound,
   from,
 }: {
-  player: player;
+  player: player | null;
   side: 1 | 2;
   playSound: (path: pathSounds) => void;
   from: "home" | "game";
@@ -39,7 +39,7 @@ function ItemVs({
         onPress={handlePress}
         style={[styles.container, from === "game" && styles.fromGame]}
       >
-        <Text style={styles.namePlayer}>{player.name}</Text>
+        <Text style={styles.namePlayer}>{player?.name}</Text>
       </TouchableOpacity>
     </View>
   );

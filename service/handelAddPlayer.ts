@@ -7,7 +7,13 @@ export default function handelAddPlayer(
 ) {
   if (nameTxt.length < 3) return undefined;
   dispatch(
-    addPlayer({ name: nameTxt, winCount: 0, loseCount: 0, drawCount: 0 })
+    addPlayer({
+      id: Date.now(),
+      name: nameTxt,
+      winCount: 0,
+      loseCount: 0,
+      drawCount: 0,
+    })
   );
   closeModel();
 }

@@ -13,7 +13,7 @@ function VS({
   playSound: (path: pathSounds) => void;
   from: "home" | "game";
 }) {
-  const { players, player1Index, player2Index } = useAppSelector(
+  const { players, player2, player1 } = useAppSelector(
     (state) => state.AppReducer
   );
 
@@ -25,19 +25,9 @@ function VS({
         </View>
       ) : (
         <>
-          <ItemVs
-            player={players[player1Index]}
-            side={1}
-            playSound={playSound}
-            from={from}
-          />
+          <ItemVs player={player1} side={1} playSound={playSound} from={from} />
           <Text style={styles.vs}>VS</Text>
-          <ItemVs
-            player={players[player2Index]}
-            side={2}
-            playSound={playSound}
-            from={from}
-          />
+          <ItemVs player={player2} side={2} playSound={playSound} from={from} />
         </>
       )}
     </View>

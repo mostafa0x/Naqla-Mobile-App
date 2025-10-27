@@ -2,18 +2,21 @@ import { player } from "@/types/AppSliceType";
 
 export default function handleChangePlayer(
   players: player[],
-  indexPlayer: number,
-  myIndex: number
+  otherPlayer: player | null,
+  myPlayer: player | null
 ) {
-  let newIndex = myIndex;
+  const myPIndex = players.findIndex((el) => el.id === myPlayer?.id);
+  const otherPIndex = players.findIndex((el) => el.id === otherPlayer?.id);
+
+  let newPlayer = null;
 
   for (let i = 1, len = players.length; i < len; i++) {
-    const nextIndex = (myIndex + i) % players.length;
-    if (nextIndex !== myIndex && nextIndex !== indexPlayer) {
-      newIndex = nextIndex;
+    const nextIndex = (myPIndex + i) % players.length;
+    if (nextIndex !== myPIndex && nextIndex !== otherPIndex) {
+      newPlayer = players[nextIndex];
       break;
     }
   }
 
-  return newIndex;
+  return newPlayer ? newPlayer : myPlayer;
 }
