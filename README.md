@@ -1,50 +1,82 @@
-# Welcome to your Expo app 👋
+# ♟️ Naqla Chess Clock App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A smart, responsive chess clock app with real-time sounds, player statistics, and a global leaderboard —  
+built with **Expo**, **React Native**, and **Redux Toolkit**.
 
-## Get started
+---
 
-1. Install dependencies
+## 🧩 Overview
 
-   ```bash
-   npm install
-   ```
+**Naqla Chess Clock** is a modern chess timer app that tracks each player's time during a match,  
+records match results, calculates points based on wins and draws, and displays a leaderboard to show player rankings.
 
-2. Start the app
+It also includes dynamic sound effects that react to gameplay —  
+making every move more engaging and intense.
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## ⚙️ Features
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- 🕒 **Smart Chess Clock**  
+  Each player has a personal countdown timer that switches turns automatically.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- 🧠 **Automatic Scoring System**  
+  - Win → +1 points  
+  - Draw → +0.5 point  
+  - Loss → 0 points  
+  The leaderboard updates automatically after every game.
 
-## Get a fresh project
+- 📊 **Player Statistics**  
+  The app tracks detailed match stats — total games, wins, draws, and losses.
 
-When you're ready, run:
+- 🔊 **Dynamic Sound Effects**  
+  - After **30 seconds**, a subtle alert sound plays.  
+  - After **50 seconds**, a more urgent sound warns the player.  
+  - Random sound effects trigger when turns change to keep the gameplay lively.
+
+- 🏆 **Leaderboard System**  
+  Displays all players ranked by their total points and performance.
+
+- 💾 **Persistent Data**  
+  All player info and stats are stored locally using AsyncStorage.
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Tools / Libraries |
+|-----------|------------------|
+| Framework | [Expo](https://expo.dev/) + React Native |
+| State Management | Redux Toolkit + React Redux |
+| UI Components | React Native Paper + React Native SVG |
+| Performance | @shopify/flash-list |
+| Audio | Expo Audio |
+| Animations | React Native Reanimated |
+| Responsive Layout | react-native-responsive-dimensions / fontsize |
+| Utilities | AsyncStorage, Expo Haptics, Expo Blur, Expo Keep Awake |
+
+---
+
+## 📸 Screenshots
+| Home Screen | In-Game Screen |
+|--------------|----------------|
+| ![Home](./assets/screenshots/home.png) | ![Clock](./assets/screenshots/clock.png) |
+
+> _(You can insert your screenshots here when uploading to GitHub)_
+
+---
+
+## 🚀 How to Run
 
 ```bash
-npm run reset-project
-```
+# Install dependencies
+npm install
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+# Start the project
+npx expo start
 
-## Learn more
+# Run on Android
+npx expo run:android
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+# Run on iOS
+npx expo run:ios
