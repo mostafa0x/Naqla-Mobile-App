@@ -54,7 +54,7 @@ export default function GameScreen() {
       time = setInterval(() => {
         dispatch(addToTimer(turn));
         dispatch(subTime(turn));
-      }, 1000);
+      }, 100);
     }
 
     return () => {
@@ -76,6 +76,7 @@ export default function GameScreen() {
     ) {
       statusGame === "winP1" && dispatch(gameOver(1));
       statusGame === "winP2" && dispatch(gameOver(2));
+
       randomEndMusic(playMusic, statusGame);
     }
     return () => {};

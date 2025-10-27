@@ -25,14 +25,15 @@ const GameSlice = createSlice({
     subTime: (state, aciton) => {
       if (state.statusGame !== "playing") return;
       const side: SideType = aciton.payload;
+
       if (side === 1 && state.player1Time > 0) {
-        state.player1Time -= 1;
+        state.player1Time -= 0.1;
       } else if (side === 2 && state.player2Time > 0) {
-        state.player2Time -= 1;
+        state.player2Time -= 0.1;
       } else if (side === 1 && state.player1Time <= 0) {
-        state.statusGame = "winP2";
-      } else if (side === 2 && state.player2Time <= 0) {
         state.statusGame = "winP1";
+      } else if (side === 2 && state.player2Time <= 0) {
+        state.statusGame = "winP2";
       }
     },
     setStatusGame: (state, action: actionTypeStatusGame) => {
@@ -85,9 +86,9 @@ const GameSlice = createSlice({
     addToTimer: (state, action) => {
       const timerId = action.payload;
       if (timerId === 1) {
-        state.timerP1 += 1;
+        state.timerP1 += 0.1;
       } else if (timerId === 2) {
-        state.timerP2 += 1;
+        state.timerP2 += 0.1;
       }
     },
     restartTimers: (state, action) => {
