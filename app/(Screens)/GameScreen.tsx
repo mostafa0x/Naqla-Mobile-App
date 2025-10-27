@@ -16,7 +16,7 @@ import { StyleSheet, View } from "react-native";
 export default function GameScreen() {
   const dispatch = useAppDispatch();
   const { playMusic, playSound } = useAudioContext();
-  const { players, player1Index, player2Index } = useAppSelector(
+  const { players, player1, player2 } = useAppSelector(
     (state) => state.AppReducer
   );
   const {
@@ -98,7 +98,7 @@ export default function GameScreen() {
       <View style={styles.container}>
         <SideSection
           side={2}
-          player={players[player2Index]}
+          player={player1}
           turn={turn}
           time={player2Time}
           statusGame={statusGame}
@@ -111,7 +111,7 @@ export default function GameScreen() {
         />
         <SideSection
           side={1}
-          player={players[player1Index]}
+          player={player2}
           turn={turn}
           time={player1Time}
           statusGame={statusGame}

@@ -3,7 +3,7 @@ import { statusGame } from "./GameSliceType";
 
 export interface SideSectionType {
   side: 1 | 2;
-  player: player;
+  player: player | null;
   time: number;
   turn: 1 | 2;
   statusGame: statusGame;

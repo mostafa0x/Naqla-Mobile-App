@@ -43,10 +43,10 @@ const AppSlice = createSlice({
     gameOver: (state, aciton) => {
       const Winnger: SideType = aciton.payload;
       const p1Index = state.players.findIndex(
-        (el, i) => el.id === state.player1Id
+        (el, i) => el.id === state.player1?.id
       );
       const p2Index = state.players.findIndex(
-        (el, i) => el.id === state.player2Id
+        (el, i) => el.id === state.player2?.id
       );
 
       if (Winnger === 1) {
@@ -61,16 +61,9 @@ const AppSlice = createSlice({
           ...p2,
           loseCount: p2.loseCount + 1,
         };
-        state.players[p2Index] = newP1;
+        state.players[p1Index] = newP1;
         state.players[p2Index] = newP2;
       } else if (Winnger === 2) {
-        const p1Index = state.players.findIndex(
-          (el, i) => el.id === state.player1Id
-        );
-        const p2Index = state.players.findIndex(
-          (el, i) => el.id === state.player2Id
-        );
-
         const p1 = state.players[p1Index];
         const p2 = state.players[p2Index];
         const newP1 = {
@@ -87,10 +80,10 @@ const AppSlice = createSlice({
     },
     setDraw: (state) => {
       const p1Index = state.players.findIndex(
-        (el, i) => el.id === state.player1Id
+        (el) => el.id === state.player1?.id
       );
       const p2Index = state.players.findIndex(
-        (el, i) => el.id === state.player2Id
+        (el) => el.id === state.player2?.id
       );
 
       const p1 = state.players[p1Index];
@@ -119,8 +112,8 @@ const AppSlice = createSlice({
     claerAll: (state) => {
       state.players = [];
       state.Leaderborad = [];
-      state.player1Id = 0;
-      state.player2Id = 1;
+      state.player1 = null;
+      state.player2 = null;
     },
   },
 });

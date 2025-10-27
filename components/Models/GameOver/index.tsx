@@ -9,7 +9,7 @@ import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Portal } from "react-native-paper";
 
 function GameOver({ Winner }: { Winner: "winP1" | "winP2" | "draw" | null }) {
-  const { players, player1Index, player2Index } = useAppSelector(
+  const { players, player1, player2 } = useAppSelector(
     (state) => state.AppReducer
   );
   console.log(players);
@@ -27,7 +27,7 @@ function GameOver({ Winner }: { Winner: "winP1" | "winP2" | "draw" | null }) {
         <View style={styles.contant}>
           <View style={styles.box}>
             <Text style={styles.mainLabel}>
-              {checkWinner(Winner, players, player1Index, player2Index)}
+              {checkWinner(Winner, player1, player2)}
             </Text>
             <View style={styles.btnsContainer}>
               <CustomButton label="Back" type={1} />

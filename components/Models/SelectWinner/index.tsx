@@ -14,9 +14,7 @@ function SelectWinner({
   isSelectWin: boolean;
   closeSelectModel: () => void;
 }) {
-  const { players, player1Index, player2Index } = useAppSelector(
-    (state) => state.AppReducer
-  );
+  const { player1, player2 } = useAppSelector((state) => state.AppReducer);
   return (
     <Portal>
       {isSelectWin && (
@@ -34,7 +32,7 @@ function SelectWinner({
               <CustomButton
                 color={"#fff"}
                 colorTxt="#000"
-                label={players[player1Index]?.name}
+                label={player1?.name ?? ""}
                 type={3}
                 closeSelectModel={closeSelectModel}
               />
@@ -47,7 +45,7 @@ function SelectWinner({
               <CustomButton
                 color="#000"
                 colorTxt="#fff"
-                label={players[player2Index]?.name}
+                label={player2?.name ?? ""}
                 type={5}
                 closeSelectModel={closeSelectModel}
               />

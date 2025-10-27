@@ -7,8 +7,10 @@ import getTotalTime from "@/service/getTotalTime";
 import { setTimes } from "@/service/Storage";
 import { rf, rh, rw } from "@/utils/dimensions";
 import React, { memo, useCallback, useEffect, useState } from "react";
-import { Keyboard, StyleSheet, Text, TextInput, View } from "react-native";
-import { Button } from "react-native-paper";
+import { Keyboard, StyleSheet, Text, View } from "react-native";
+import SaveTimeBtn from "./Btn";
+import CustomTime_InputName from "./InputName";
+import CustomTime_InputTime from "./InputTime";
 
 function CustomTime() {
   const dispatch = useAppDispatch();
@@ -67,52 +69,23 @@ function CustomTime() {
   return (
     <View style={styles.container}>
       <View style={styles.allBoxs}>
-        <TextInput
-          maxLength={50}
-          placeholder={"Time Name..."}
-          style={styles.inputName}
-          placeholderTextColor={styles.input.color}
-          contextMenuHidden
-          value={nameTime}
-          onChangeText={setNameTime}
-        />
+        <CustomTime_InputName setNameTime={setNameTime} nameTime={nameTime} />
         <View style={styles.boxsContainer}>
-          <TextInput
-            keyboardType="numeric"
-            maxLength={2}
-            placeholder="00"
-            style={styles.input}
-            placeholderTextColor={styles.input.color}
-            textAlign="center"
-            textAlignVertical="center"
-            contextMenuHidden
+          <CustomTime_InputTime
             value={mTime}
-            onChangeText={(text) => handleChange(text, 1)}
+            type={1}
+            handleChange={handleChange}
           />
 
           <Text style={styles.spector}>:</Text>
-          <TextInput
-            keyboardType="numeric"
-            maxLength={2}
-            placeholder={"00"}
-            style={styles.input}
-            placeholderTextColor={styles.input.color}
-            textAlign="center"
-            textAlignVertical="center"
-            contextMenuHidden
+          <CustomTime_InputTime
             value={sTime}
-            onChangeText={(text) => handleChange(text, 2)}
+            type={2}
+            handleChange={handleChange}
           />
         </View>
+        <SaveTimeBtn isDis={isDis} handleAdd={handleAdd} nameTime={nameTime} />
       </View>
-      <Button
-        onPress={handleAdd}
-        disabled={isDis}
-        labelStyle={styles.labelBtn}
-        style={[styles.btn, !isDis && nameTime.length > 0 && styles.active]}
-      >
-        Save
-      </Button>
     </View>
   );
 }
@@ -127,24 +100,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: rh(20),
   },
-  inputName: {
-    backgroundColor: "#252525ff",
-    width: rw(120),
-    height: rh(42),
-    borderRadius: rw(5),
-    fontFamily: Fonts.TajawalMedium,
-    fontSize: rf(16),
-    color: Colors.primaryText,
-  },
-  input: {
-    backgroundColor: "#252525ff",
-    width: rw(30),
-    height: rh(42),
-    borderRadius: rw(5),
-    fontFamily: Fonts.TajawalBlack,
-    fontSize: rf(16),
-    color: Colors.primaryText,
-  },
+
   boxsContainer: {
     flexDirection: "row",
     gap: rw(3),
@@ -153,19 +109,6 @@ const styles = StyleSheet.create({
   spector: {
     fontFamily: Fonts.TajawalBlack,
     fontSize: rf(28),
-    color: Colors.primaryText,
-  },
-  btn: {
-    backgroundColor: Colors.placeholder,
-    width: rw(100),
-    alignSelf: "center",
-  },
-  active: {
-    backgroundColor: Colors.startBtn,
-  },
-  labelBtn: {
-    fontFamily: Fonts.TajawalBold,
-    fontSize: rf(18),
     color: Colors.primaryText,
   },
 });
